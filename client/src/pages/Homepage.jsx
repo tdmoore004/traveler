@@ -1,10 +1,12 @@
 import React from 'react';
+// import App from '../components/Calendar/Calendar.jsx'
+import TravelCalendar from '../components/Calendar/Calendar.jsx'
 
 const Homepage = () => {
   return (
-    <>
-      <h2>Welcome to the better todo app!</h2>
-    </>
+    <div>
+      <TravelCalendar/>
+    </div>
   );
 };
 
