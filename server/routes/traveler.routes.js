@@ -20,7 +20,8 @@ router
 
     User
       .create({
-        text: req.body.text
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
       })
       .then(data => {
         res.json({ success: true, data });
