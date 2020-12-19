@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { Todo } = require('../models');
+const { Trip, User } = require('../models');
 
 // restful api
 // /api/todo/
 router
   .route('/')
   .get((req, res) => {
-    Todo
+    User
       .find({})
       .then(data => {
         res.json({ success: true, data });
@@ -18,9 +18,10 @@ router
   .post((req, res) => {
     console.log({ reqBody: req.body });
 
-    Todo
+    User
       .create({
-        text: req.body.text
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
       })
       .then(data => {
         res.json({ success: true, data });

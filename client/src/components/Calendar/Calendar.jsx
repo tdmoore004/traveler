@@ -146,7 +146,7 @@ class TravelCalendar extends Component {
                     handleDragStart={this.handleDragStart}
                     resizable
                     onSelectSlot={this.handleSelect}
-                    style={{ height: "100vh" }}
+                    style={{ height: "75vh" }}
                     popup
                 />
             </div>

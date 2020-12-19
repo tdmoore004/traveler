@@ -7,8 +7,8 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   lastName: {
-    type: Date,
-    default: Date.now
+    type: String,
+    required: true
   },
   phoneNumber: {
     type: String
@@ -19,7 +19,56 @@ const UserSchema = new mongoose.Schema({
   password: {
 
   },
-  trips: [Trip]
+  trips: {
+    location: {
+        type: String,
+        required: true
+    },
+    startDate: {
+        type: Date,
+        required: true
+    },
+    endDate: {
+        type: Date,
+        required: true
+    },
+    activity: {
+        name: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+        },
+        startActivityDate: {
+            type: Date,
+            required: true
+        },
+        endActivityDate: {
+            type: Date,
+            required: true
+        },
+    },
+    flights: {
+        flightNumber: {
+            type: String,
+            required: true
+        },
+        startFlightDate: {
+            type: Date,
+            required: true
+        },
+        endFlightDate: {
+            type: Date,
+            required: true
+        },
+    },
+    lodging: {
+        name: {
+          type: String,
+        }
+    }
+  }
 });
 
 const User = mongoose.model('User', UserSchema);
