@@ -14,12 +14,13 @@ const propTypes = {}
 class TravelCalendar extends Component {
     state = {
         events: [
-            {
-                start: moment().toDate(),
-                end: moment().add(1, "days").toDate(),
-                title: "Some title",
-            },
+            // {
+            //     start: moment().toDate(),
+            //     end: moment().add(1, "days").toDate(),
+            //     title: "Some title",
+            // },
         ],
+        displayDragItemInCell: true
     };
 
     handleSelect = ({ start, end }) => {
@@ -51,6 +52,80 @@ class TravelCalendar extends Component {
         console.log(data);
     };
 
+
+
+
+
+    // Drag and Drop Code:
+    handleDragStart = event => {
+        this.setState({ draggedEvent: event })
+    }
+
+    dragFromOutsideItem = () => {
+        return this.state.draggedEvent
+    }
+
+    onDropFromOutside = ({ start, end, allDay }) => {
+        const { draggedEvent } = this.state
+
+        const event = {
+            id: draggedEvent.id,
+            title: draggedEvent.title,
+            start,
+            end,
+            allDay: allDay,
+        }
+
+        this.setState({ draggedEvent: null })
+        this.moveEvent({ event, start, end })
+    }
+
+    moveEvent = ({ event, start, end, isAllDay: droppedOnAllDaySlot }) => {
+        const { events } = this.state
+
+        let allDay = event.allDay
+
+        if (!event.allDay && droppedOnAllDaySlot) {
+            allDay = true
+        } else if (event.allDay && !droppedOnAllDaySlot) {
+            allDay = false
+        }
+
+        const nextEvents = events.map(existingEvent => {
+            return existingEvent.id == event.id
+                ? { ...existingEvent, start, end }
+                : existingEvent
+        })
+
+        this.setState({
+            events: nextEvents,
+        })
+
+        // alert(`${event.title} was dropped onto ${updatedEvent.start}`)
+    }
+
+    resizeEvent = ({ event, start, end }) => {
+        const { events } = this.state
+
+        const nextEvents = events.map(existingEvent => {
+            return existingEvent.id == event.id
+                ? { ...existingEvent, start, end }
+                : existingEvent
+        })
+
+        this.setState({
+            events: nextEvents,
+        })
+
+        //alert(`${event.title} was resized to ${start}-${end}`)
+    }
+
+
+
+
+
+
+
     render() {
         return (
             <div className="App">
@@ -61,13 +136,20 @@ class TravelCalendar extends Component {
                     events={this.state.events}
                     localizer={localizer}
                     scrollToTime={new Date(1970, 1, 1, 6)}
-                    defaultDate={new Date(2015, 3, 12)}
+                    // defaultDate={new Date(2015, 3, 12)}
                     onSelectEvent={event => alert(event.title)}
-                    onEventDrop={this.onEventDrop}
+                    onEventDrop={this.moveEvent}
                     onEventResize={this.onEventResize}
+
+                    dragFromOutsideItem={
+                        this.state.displayDragItemInCell ? this.dragFromOutsideItem : null
+                    }
+                    onDropFromOutside={this.onDropFromOutside}
+                    handleDragStart={this.handleDragStart}
                     resizable
                     onSelectSlot={this.handleSelect}
                     style={{ height: "100vh" }}
+                    popup
                 />
             </div>
         );
