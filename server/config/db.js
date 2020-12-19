@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 async function db() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/todo_db', {
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/traveler_db', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
