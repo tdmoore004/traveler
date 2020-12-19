@@ -120,6 +120,9 @@ class TravelCalendar extends Component {
         //alert(`${event.title} was resized to ${start}-${end}`)
     }
 
+    handleEventEditModal = (event) => {
+        console.log("hit event: ", event)
+    }
 
 
 
@@ -130,13 +133,14 @@ class TravelCalendar extends Component {
         return (
             <div className="App">
                 <DnDCalendar
+                    data-toggle="eventModal"
                     selectable
                     defaultDate={moment().toDate()}
                     defaultView="month"
                     events={this.state.events}
                     localizer={localizer}
                     scrollToTime={new Date(1970, 1, 1, 6)}
-                    onSelectEvent={event => alert(event.title)}
+                    onSelectEvent={this.handleEventEditModal}
                     onEventDrop={this.moveEvent}
                     onEventResize={this.resizeEvent}
                     dragFromOutsideItem={
@@ -149,6 +153,13 @@ class TravelCalendar extends Component {
                     style={{ height: "75vh" }}
                     popup
                 />
+                <button
+                    onClick={this.handleEventEditModal}
+                    className="button"
+                    data-toggle="eventEditModal"
+                >
+                    Edit Event
+                </button>
             </div>
         );
     }
