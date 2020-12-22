@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import EventModal from "../EventModal/EventModal.jsx"
 
 // import "./App.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
@@ -10,7 +11,6 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 const propTypes = {}
-console.log(DnDCalendar)
 class TravelCalendar extends Component {
     state = {
         events: [
@@ -122,6 +122,9 @@ class TravelCalendar extends Component {
 
     handleEventEditModal = (event) => {
         console.log("hit event: ", event)
+        return (
+            <EventModal/>
+        )
     }
 
 
@@ -132,6 +135,14 @@ class TravelCalendar extends Component {
     render() {
         return (
             <div className="App">
+                {/* <button
+                    onClick={this.handleEventEditModal}
+                    className="button"
+                    data-toggle="eventModal"
+                >
+                    Add Event
+                </button> */}
+                <EventModal/>
                 <DnDCalendar
                     data-toggle="eventModal"
                     selectable
@@ -153,13 +164,13 @@ class TravelCalendar extends Component {
                     style={{ height: "75vh" }}
                     popup
                 />
-                <button
+                {/* <button
                     onClick={this.handleEventEditModal}
                     className="button"
                     data-toggle="eventModal"
                 >
                     Edit Event
-                </button>
+                </button> */}
             </div>
         );
     }
