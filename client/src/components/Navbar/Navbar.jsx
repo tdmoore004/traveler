@@ -22,11 +22,16 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <li className="Navbar-link">
-          <Link to="/todos/new">
-            Account
-          </Link>
-        </li>
+        <ul class="Navbar-Links dropdown menu" data-dropdown-menu>
+          <li>
+            <a href="#">Account</a>
+            <ul class="menu">
+              <li><a href="#">Add a new trip</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
       </ul>
     </nav>
   );
