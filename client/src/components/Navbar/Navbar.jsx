@@ -17,14 +17,14 @@ const Navbar = () => {
         </li>
 
         <li className="Navbar-link">
-          <Link to="/todos">
-            View Todos
+          <Link to="/trips">
+            Trips
           </Link>
         </li>
 
         <li className="Navbar-link">
           <Link to="/todos/new">
-            Add Todo
+            Account
           </Link>
         </li>
       </ul>

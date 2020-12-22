@@ -156,7 +156,7 @@ class TravelCalendar extends Component {
                 <button
                     onClick={this.handleEventEditModal}
                     className="button"
-                    data-toggle="eventEditModal"
+                    data-toggle="eventModal"
                 >
                     Edit Event
                 </button>
