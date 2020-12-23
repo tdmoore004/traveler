@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useGlobalContext } from '../utils/GlobalContext';
 
-const ViewTodos = () => {
+const Trips = () => {
   const [state, dispatch] = useGlobalContext();
   console.log({ state })
 
@@ -38,4 +38,4 @@ const ViewTodos = () => {
   );
 };
 
-export default ViewTodos;
+export default Trips;
