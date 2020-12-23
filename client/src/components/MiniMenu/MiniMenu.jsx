@@ -11,23 +11,33 @@ class MiniMenu extends Component {
     }
     render() {
         return (
-            <div className="callout">
-                <table className="hover unstriped">
-                    <tbody>
-                        <tr>
-                            <td>Travel</td>
-                        </tr>
-                        <tr>
-                            <td>Lodging</td>
-                        </tr>
-                        <tr>
-                            <td>Activities</td>
-                        </tr>
-                        <tr>
-                            <td>Notes</td>
-                        </tr>
-                    </tbody>
-                </table>
+           <div class="callout">
+                <ul class="accordion" data-accordion>
+                    <li class="accordion-item is-active" data-accordion-item>
+                        <a href="#" class="accordion-title">Next Trip</a>
+                        <div class="accordion-content" data-tab-content>
+                            <p><a href="#">Flights</a></p>
+                            <p><a href="#">Lodging</a></p>
+                            <p><a href="#">Activities</a></p>
+                        </div>
+                    </li>
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title">Trip B</a>
+                        <div class="accordion-content" data-tab-content>
+                            <p><a href="#">Flights</a></p>
+                            <p><a href="#">Lodging</a></p>
+                            <p><a href="#">Activities</a></p>
+                        </div>
+                    </li>
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title">Trip C</a>
+                        <div class="accordion-content" data-tab-content>
+                            <p><a href="#">Flights</a></p>
+                            <p><a href="#">Lodging</a></p>
+                            <p><a href="#">Activities</a></p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         );
     }
