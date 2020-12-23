@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Trip = require('./trip');
 
+// https://mongoosejs.com/docs/populate.html
+
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
