@@ -12,9 +12,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  phoneNumber: {
-    type: String
-  },
   email: {
     type: String
   },
@@ -39,16 +36,16 @@ const UserSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        description: {
+        activityStart: {
+          type: Date,
+          required: true
+        },
+        activityEnd: {
+          type: Date,
+          required: true
+        },
+        additionalInfo: {
             type: String,
-        },
-        startActivityDate: {
-            type: Date,
-            required: true
-        },
-        endActivityDate: {
-            type: Date,
-            required: true
         },
     },
     flights: {
@@ -56,19 +53,33 @@ const UserSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        startFlightDate: {
+        departure: {
             type: Date,
             required: true
         },
-        endFlightDate: {
+        arrival: {
             type: Date,
             required: true
         },
+        additionalInfo: {
+          type: String,
+      }
     },
     lodging: {
         name: {
           type: String,
-        }
+        },
+        checkIn: {
+          type: Date,
+          required: true
+        },
+        checkOut: {
+          type: Date,
+          required: true
+        },
+        additionalInfo: {
+            type: String,
+        },
     }
   }
 });
