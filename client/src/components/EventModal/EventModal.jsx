@@ -15,6 +15,18 @@ class EventModal extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        },
+        overlay: {zIndex:1000}
+    };
+
     handleOpenModal() {
         this.setState({ showModal: true });
     }
@@ -43,6 +55,7 @@ class EventModal extends Component {
                     contentLabel="onRequestClose Example"
                     onRequestClose={this.handleCloseModal}
                     shouldCloseOnOverlayClick={false}
+                    style={this.customStyles}
                 >
                     <p>Modal text!</p>
                     <button onClick={this.handleCloseModal}>X</button>
