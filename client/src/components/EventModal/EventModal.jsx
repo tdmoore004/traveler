@@ -24,7 +24,7 @@ class EventModal extends Component {
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)'
         },
-        overlay: {zIndex:1000}
+        overlay: { zIndex: 1000 }
     };
 
     handleOpenModal() {
@@ -56,8 +56,8 @@ class EventModal extends Component {
                     onRequestClose={this.handleCloseModal}
                     shouldCloseOnOverlayClick={false}
                     style={this.customStyles}
+                    ariaHideApp={false}
                 >
-                    <p>Modal text!</p>
                     <button onClick={this.handleCloseModal}>X</button>
                     <form onSubmit={this.handleSubmit}>
                         <label>
@@ -69,11 +69,69 @@ class EventModal extends Component {
                                 <option value="activity">Activity</option>
                             </select>
                         </label>
+                        {this.state.eventType === "flight" &&
+                            <div>
+                                <label>
+                                    Flight Number:
+                                <input type="text" name="flightNum" />
+                                </label>
+                                <label>
+                                    Departure Time:
+                                <input type="text" name="departureTime" />
+                                </label>
+                                <label>
+                                    Arrival Time:
+                                <input type="text" name="arrivalTime" />
+                                </label>
+                                <label>
+                                    Additional Info:
+                                <input type="text" name="additionalInfoFlight" />
+                                </label>
+                            </div>
+                        }
                         {this.state.eventType === "lodging" &&
-                            <label>
-                                Name:
-                        <input type="text" name="name" />
-                            </label>
+                            <div>
+                                <label>
+                                    Lodging Name:
+                            <input type="text" name="lodgingName" />
+                                </label>
+                                <label>
+                                    Check-in Date:
+                            <input type="text" name="checkInDate" />
+                                </label>
+                                <label>
+                                    Check-out Date:
+                            <input type="text" name="checkOutDate" />
+                                </label>
+                                <label>
+                                    Additional Info:
+                            <input type="text" name="additionalInfoLodge" />
+                                </label>
+                            </div>
+                        }
+                        {this.state.eventType === "activity" &&
+                            <div>
+                                <label>
+                                    Activity Name:
+                            <input type="text" name="activityName" />
+                                </label>
+                                <label>
+                                    Date:
+                            <input type="text" name="activityDate" />
+                                </label>
+                                <label>
+                                    Start Time:
+                            <input type="text" name="activityStart" />
+                                </label>
+                                <label>
+                                    End Time:
+                            <input type="text" name="activityEnd" />
+                                </label>
+                                <label>
+                                    Additional Info:
+                            <input type="text" name="additionalInfoActivity" />
+                                </label>
+                            </div>
                         }
                         <input type="submit" value="Submit" />
                     </form>

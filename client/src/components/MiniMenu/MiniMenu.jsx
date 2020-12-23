@@ -11,8 +11,8 @@ class MiniMenu extends Component {
     }
     render() {
         return (
-            <div class="callout">
-                <table class="hover unstriped">
+            <div className="callout">
+                <table className="hover unstriped">
                     <tbody>
                         <tr>
                             <td>Travel</td>
