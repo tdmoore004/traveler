@@ -16,13 +16,7 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <li className="Navbar-link">
-          <Link to="/trips">
-            Trips
-          </Link>
-        </li>
-
-        <ul className="Navbar-Links dropdown menu" data-dropdown-menu>
+        <ul class="Navbar-Links dropdown menu" data-dropdown-menu>
           <li>
             <a href="#">Account</a>
             <ul className="menu">
