@@ -11,7 +11,7 @@ class MiniMenu extends Component {
     }
     render() {
         return (
-            <div class="callout">
+           <div class="callout">
                 <ul class="accordion" data-accordion>
                     <li class="accordion-item is-active" data-accordion-item>
                         <a href="#" class="accordion-title">Next Trip</a>

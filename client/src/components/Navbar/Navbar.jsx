@@ -22,10 +22,10 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <ul class="Navbar-Links dropdown menu" data-dropdown-menu>
+        <ul className="Navbar-Links dropdown menu" data-dropdown-menu>
           <li>
             <a href="#">Account</a>
-            <ul class="menu">
+            <ul className="menu">
               <li><a href="#">Add a new trip</a></li>
               <li><a href="#">Profile</a></li>
               <li><a href="#">Logout</a></li>

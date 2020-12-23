@@ -6,11 +6,11 @@ import MiniMenu from '../components/MiniMenu/MiniMenu.jsx';
 const Homepage = () => {
   return (
     <>
-      <div class="grid-x">
-        <div class="cell medium-3">
+      <div className="grid-x">
+        <div className="cell medium-3">
           <MiniMenu />
         </div>
-        <div class="cell medium-9">
+        <div className="cell medium-9">
           <TravelCalendar />
         </div>
       </div>
