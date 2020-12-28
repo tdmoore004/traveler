@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import GlobalProvider from './utils/GlobalContext';
 import Homepage from './pages/Homepage';
-import Login from './pages/Login/Login.jsx';
+import Login from './pages/Login.jsx';
 import Navbar from './components/Navbar';
 import $ from "jquery";
 
