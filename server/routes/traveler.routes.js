@@ -4,7 +4,7 @@ const passport = require("../passport/setup.js")
 const bcrypt = require("bcryptjs")
 
 // restful api
-// /api/todo/
+// /api/traveler/
 router
   .route("/")
   .get((req, res) => {

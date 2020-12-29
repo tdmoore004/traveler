@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from "axios";
 
 class Login extends Component {
 
@@ -25,24 +26,26 @@ class Login extends Component {
         }
 
         // If we have an email and password we run the loginUser function and clear the form
-        // loginUser(userData.email, userData.password);
+        this.loginUser(userData.email, userData.password);
         // emailInput.val("");
         // passwordInput.val("");
     };
 
-    // loginUser = (email, password) => {
-    //     post("/api/login", {
-    //         email: email,
-    //         password: password
-    //     })
-    //         .then(function () {
-    //             window.location.replace("/");
-    //             // If there's an error, log the error
-    //         })
-    //         .catch(function (err) {
-    //             console.log(err);
-    //         });
-    // }
+    loginUser = (email, password) => {
+        console.log(email);
+        console.log(password);
+        axios.post("/api/traveler/login", {
+            email: email,
+            password: password
+        })
+            .then(function () {
+                window.location.replace("/");
+                // If there's an error, log the error
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
 
     render () {
         return (

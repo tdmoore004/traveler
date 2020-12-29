@@ -33,19 +33,12 @@ passport.use(new LocalStrategy(
                 console.log("wrong email")
                 return done(null, false, {message: "Incorrect email."});
                 //if there is matching email but no matching password in the database
-            } 
-            // else if (!user.validPassword(password)) {
-            //     console.log("wrong password")
-            //     return done(null, false, {message: "Incorrect password."});
-            // } 
-            // //If find matching email and password, return the host to the route handler
-            // console.log(user);
-            // return done(null, user);
-            else {
+            } else {
                 bcrypt.compare(password, user.password, (error, isMatch) => {
                     console.log(user);
-                    if (error) throw error;
 
+                    if (error) throw error;
+                    
                     if (isMatch) {
                         return done(null, user);
                     } else {
