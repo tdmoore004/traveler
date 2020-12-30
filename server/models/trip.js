@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const User = require('./user.js')
+const Schema = mongoose.Schema;
 
 const TripSchema = new mongoose.Schema({
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     location: {
         type: String,
         required: true

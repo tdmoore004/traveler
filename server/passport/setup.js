@@ -28,17 +28,14 @@ passport.use(new LocalStrategy(
         User.findOne({ email: email
         }).then((user) => {
             //If there is no host in the database with given email
-            console.log(user);
             if (!user) {
-                console.log("wrong email")
                 return done(null, false, {message: "Incorrect email."});
                 //if there is matching email but no matching password in the database
             } else {
                 bcrypt.compare(password, user.password, (error, isMatch) => {
-                    console.log(user);
 
                     if (error) throw error;
-                    
+
                     if (isMatch) {
                         return done(null, user);
                     } else {
@@ -48,7 +45,6 @@ passport.use(new LocalStrategy(
             } 
             //If find matching email and password, return the host to the route handler
         }).catch(error => {
-            console.log(error);
             return done(null, false, { message: "Error" })
         });
 
