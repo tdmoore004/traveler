@@ -22,7 +22,6 @@ router
 router
   .route("/signup")
   .post((req, res) => {
-    console.log(req.body)
     User
       .create({
         firstName: req.body.firstName,
@@ -41,7 +40,6 @@ router
 
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
-    console.log(user);
     if (err) {
       return res.status(400).json({ errors: err });
     }
@@ -56,6 +54,22 @@ router.post("/login", (req, res, next) => {
     });
   })(req, res, next);
 });
+
+router.post('/add-trip', async (req, res) => {
+  try {
+    const trip = new Trip(req.body);
+    await trip.save();
+
+    const user = await User.findById({ _id: trip.user });
+    console.log(user);
+    user.trips.push(trip);
+    await user.save();
+    res.status(200).json({success:true, data: trip });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message })
+  }
+
+})
 
 // /api/todo/:id
 // router
