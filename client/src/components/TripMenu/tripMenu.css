@@ -1,0 +1,17 @@
+.callout {
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.event-button {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 48%;
+}
+
+.trip-button {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 48%;
+}
