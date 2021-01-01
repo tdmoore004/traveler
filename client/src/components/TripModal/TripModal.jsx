@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import DatePicker from "react-datepicker";
 import { TimePicker } from 'antd';
 import moment from 'moment';
+import axios from "axios";
 import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -11,11 +12,12 @@ class EventModal extends Component {
         super();
         this.state = {
             showModal: false,
-            eventType: "",
+            // eventType: "",
+            location: "",
             departureDate: "",
             departureTime: "",
-            returnDate: "",
-            returnTime: ""
+            // returnDate: "",
+            // returnTime: ""
         };
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -51,9 +53,40 @@ class EventModal extends Component {
     }
 
     handleSubmit(event) {
-        console.log('A name was submitted: ' + this.state.value);
+        console.log(this.state.location, this.state.departureDate, this.state.returnDate);
         event.preventDefault();
-    }
+        var tripData = {
+            location: this.state.location,
+            startDate: this.state.departureDate,
+            endDate: this.state.returnDate,
+        };
+
+        // if (!tripData.email || !tripData.password) {
+        //     return;
+        // }
+
+        // If we have an email and password we run the loginUser function and clear the form
+        this.logTrip(tripData.location, tripData.startDate, tripData.endDate);
+        // emailInput.val("");
+        // passwordInput.val("");
+    };
+
+    logTrip = (location, startDate, endDate) => {
+        axios.post("/api/traveler/add-trip", {
+            user: "5febf49e1f26fc221b34d7f2",
+            location: location,
+            startDate: startDate,
+            endDate: endDate
+        })
+            .then(function () {
+                console.log("success")
+                // window.location.replace("/");
+                // If there's an error, log the error
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    };
 
     render() {
         return (
@@ -71,30 +104,66 @@ class EventModal extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Where are you going?
-                            <input type="text" name="additionalInfoActivity" />
+                            <input onChange={e => this.setState({ location: e.target.value })} type="text" name="tripLocation" />
                         </label>
-                        <label>
+                        <div>
+                            Departure:
+                            <DatePicker
+                                selected={this.state.departureDate}
+                                onChange={date => this.setState({ departureDate: date })}
+                                shouldCloseOnSelect="true"
+                            />
+                        </div>
+                        <div>
+                            Return:
+                            <DatePicker
+                                selected={this.state.returnDate}
+                                onChange={date => this.setState({ returnDate: date })}
+                                shouldCloseOnSelect="true"
+                            />
+                        </div>
+                        {/* <label>
                             Are you flying or driving?
                         <select value={this.state.eventType} onChange={this.handleChange}>
                                 <option value="">Select event type...</option>
                                 <option value="flight">Flying</option>
                                 <option value="drive">Driving</option>
                             </select>
-                        </label>
+                        </label> */}
                         {this.state.eventType === "flight" &&
                             <div>
                                 <label>
                                     Flight Number:
                                 <input type="text" name="flightNum" />
                                 </label>
-                                <label>
-                                    Departure Time:
-                                <input type="text" name="departureTime" />
-                                </label>
-                                <label>
-                                    Arrival Time:
-                                <input type="text" name="arrivalTime" />
-                                </label>
+                                <div>
+                                    Departure:
+                                    <DatePicker
+                                        selected={this.state.departureDate}
+                                        onChange={date => this.setState({ departureDate: date })}
+                                        shouldCloseOnSelect="true"
+                                    />
+                                    <TimePicker
+                                        use12Hours
+                                        defaultValue={moment('12:08', 'HH:mm')}
+                                        onChange={time => this.setState({ departureTime: time })}
+                                        format="h:mm a"
+                                    />
+                                </div>
+                                <div>
+                                    Return:
+                                    <DatePicker
+                                        selected={this.state.returnDate}
+                                        onChange={date => this.setState({ returnDate: date })}
+                                        shouldCloseOnSelect="true"
+                                    />
+                                    <TimePicker
+                                        use12Hours
+                                        defaultValue={moment('12:08', 'HH:mm')}
+                                        onChange={time => this.setState({ returnTime: time })}
+                                        format="h:mm a"
+                                    />
+                                </div>
                                 <label>
                                     Additional Info:
                                 <input type="text" name="additionalInfoFlight" />
@@ -110,7 +179,7 @@ class EventModal extends Component {
                                         onChange={date => this.setState({ departureDate: date })}
                                         shouldCloseOnSelect="true"
                                     />
-                                    <TimePicker 
+                                    <TimePicker
                                         use12Hours
                                         defaultValue={moment('12:08', 'HH:mm')}
                                         onChange={time => this.setState({ departureTime: time })}
@@ -124,7 +193,7 @@ class EventModal extends Component {
                                         onChange={date => this.setState({ returnDate: date })}
                                         shouldCloseOnSelect="true"
                                     />
-                                    <TimePicker 
+                                    <TimePicker
                                         use12Hours
                                         defaultValue={moment('12:08', 'HH:mm')}
                                         onChange={time => this.setState({ returnTime: time })}

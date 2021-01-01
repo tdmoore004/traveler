@@ -57,6 +57,7 @@ router.post("/login", (req, res, next) => {
 
 router.post('/add-trip', async (req, res) => {
   try {
+    console.log(req.body);
     const trip = new Trip(req.body);
     await trip.save();
 
@@ -66,6 +67,7 @@ router.post('/add-trip', async (req, res) => {
     await user.save();
     res.status(200).json({success:true, data: trip });
   } catch (err) {
+    console.log(err);
     res.status(400).json({ success: false, message: err.message })
   }
 
