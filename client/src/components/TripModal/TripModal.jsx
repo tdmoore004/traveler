@@ -67,6 +67,7 @@ class EventModal extends Component {
 
         // If we have an email and password we run the loginUser function and clear the form
         this.logTrip(tripData.location, tripData.startDate, tripData.endDate);
+        this.handleCloseModal();
         // emailInput.val("");
         // passwordInput.val("");
     };
@@ -79,7 +80,7 @@ class EventModal extends Component {
             endDate: endDate
         })
             .then(function () {
-                console.log("success")
+                console.log("success");
                 // window.location.replace("/");
                 // If there's an error, log the error
             })
