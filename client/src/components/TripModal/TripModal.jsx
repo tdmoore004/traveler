@@ -8,8 +8,8 @@ import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
 
 class EventModal extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             showModal: false,
             // eventType: "",
@@ -17,7 +17,7 @@ class EventModal extends Component {
             departureDate: "",
             departureTime: "",
             // returnDate: "",
-            // returnTime: ""
+            // returnTime: "",
         };
 
         this.handleOpenModal = this.handleOpenModal.bind(this);

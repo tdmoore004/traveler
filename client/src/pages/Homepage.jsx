@@ -7,10 +7,10 @@ const Homepage = () => {
   return (
     <>
       <div className="grid-x">
-        <div className="cell medium-3">
+        <div className="cell large-3">
           <TripMenu />
         </div>
-        <div className="cell medium-9">
+        <div className="cell large-9">
           <TravelCalendar />
         </div>
       </div>
