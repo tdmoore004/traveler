@@ -63,11 +63,12 @@ class LoginModal extends Component {
             email: email,
             password: password
         })
-            .then(function () {
+            .then((response) => {
+                localStorage.setItem("user", response.data);
                 window.location.replace("/");
                 // If there's an error, log the error
             })
-            .catch(function (err) {
+            .catch((err) => {
                 console.log(err);
             });
     }

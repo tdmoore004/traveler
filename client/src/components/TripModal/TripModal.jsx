@@ -74,7 +74,7 @@ class EventModal extends Component {
 
     logTrip = (location, startDate, endDate) => {
         axios.post("/api/traveler/add-trip", {
-            user: "5febf49e1f26fc221b34d7f2",
+            user: localStorage.getItem("user"),
             location: location,
             startDate: startDate,
             endDate: endDate

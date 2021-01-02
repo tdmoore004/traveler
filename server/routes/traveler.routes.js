@@ -29,8 +29,8 @@ router
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10)
       })
-      .then(data => {
-        res.json({ success: true, data });
+      .then(user => {
+        res.json(user.id);
       })
       .catch(err => {
         console.log(err);
@@ -38,22 +38,24 @@ router
       });
   });
 
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return res.status(400).json({ errors: err });
-    }
-    if (!user) {
-      return res.status(400).json({ errors: "No Users Found" });
-    }
-    req.logIn(user, (err) => {
+router
+  .route("/login")
+  .post((req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
       if (err) {
         return res.status(400).json({ errors: err });
       }
-      return res.status(200).json({ success: `Logged in ${user.id}` });
-    });
-  })(req, res, next);
-});
+      if (!user) {
+        return res.status(400).json({ errors: "No Users Found" });
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+          return res.status(400).json({ errors: err });
+        }
+        return res.status(200).json(user.id);
+      });
+    })(req, res, next);
+  });
 
 router.post('/add-trip', async (req, res) => {
   try {
@@ -65,7 +67,7 @@ router.post('/add-trip', async (req, res) => {
     console.log(user);
     user.trips.push(trip);
     await user.save();
-    res.status(200).json({success:true, data: trip });
+    res.status(200).json({ success: true, data: trip });
   } catch (err) {
     console.log(err);
     res.status(400).json({ success: false, message: err.message })
