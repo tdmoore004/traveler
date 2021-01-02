@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './tripMenu.css'
 import EventModal from "../EventModal/EventModal.jsx"
-// import TripModal from "../TripModal/TripModal.jsx"
+import TripModal from "../TripModal/TripModal.jsx"
 
 class TripMenu extends Component {
 
@@ -17,12 +17,12 @@ class TripMenu extends Component {
     render() {
         return (
             <>
-                {/* <EventModal/> */}
-                {/* <TripModal/> */}
-                <div class="primary button-group">
+                <EventModal/>
+                <TripModal/>
+                {/* <div class="primary button-group">
                     <a class="trip-button button">Add Trip</a>
                     <a class="event-button button" onClick={<EventModal/>}>Add Event</a>
-                </div>
+                </div> */}
                 <div class="callout">
                     <ul class="accordion" data-accordion>
                         <li class="accordion-item is-active" data-accordion-item>

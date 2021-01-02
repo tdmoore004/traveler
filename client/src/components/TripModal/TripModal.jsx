@@ -92,7 +92,7 @@ class EventModal extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleOpenModal}>Add Trip</button>
+                <button class="trip-button button" onClick={this.handleOpenModal}>Add Trip</button>
                 <Modal
                     isOpen={this.state.showModal}
                     contentLabel="onRequestClose Example"

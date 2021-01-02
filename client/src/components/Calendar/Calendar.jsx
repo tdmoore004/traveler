@@ -15,13 +15,7 @@ const propTypes = {}
 
 class TravelCalendar extends Component {
     state = {
-        events: [
-            // {
-            //     start: moment().toDate(),
-            //     end: moment().add(1, "days").toDate(),
-            //     title: "Some title",
-            // },
-        ],
+        events: [],
         displayDragItemInCell: true
     };
 
@@ -102,8 +96,6 @@ class TravelCalendar extends Component {
         this.setState({
             events: nextEvents,
         })
-
-        // alert(`${event.title} was dropped onto ${updatedEvent.start}`)
     }
 
     resizeEvent = ({ event, start, end }) => {
@@ -118,8 +110,6 @@ class TravelCalendar extends Component {
         this.setState({
             events: nextEvents,
         })
-
-        //alert(`${event.title} was resized to ${start}-${end}`)
     }
 
     handleEventEditModal = (event) => {
@@ -138,15 +128,6 @@ class TravelCalendar extends Component {
     render() {
         return (
             <div className="App">
-                {/* <button
-                    onClick={this.handleEventEditModal}
-                    className="button"
-                    data-toggle="eventModal"
-                >
-                    Add Event
-                </button> */}
-                <EventModal/>
-                <TripModal/>
                 <DnDCalendar
                     data-toggle="eventModal"
                     selectable
@@ -155,7 +136,6 @@ class TravelCalendar extends Component {
                     events={this.state.events}
                     localizer={localizer}
                     scrollToTime={new Date(1970, 1, 1, 6)}
-                    // onSelectEvent={this.handleEventEditModal}
                     onEventDrop={this.moveEvent}
                     onEventResize={this.resizeEvent}
                     dragFromOutsideItem={
