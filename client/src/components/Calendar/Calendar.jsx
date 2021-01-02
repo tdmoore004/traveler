@@ -43,6 +43,7 @@ class TravelCalendar extends Component {
                         events: [
                             ...this.state.events,
                             {
+                                type: "trip",
                                 title: trip.location,
                                 start: new Date(startDateYear, startDateMonth, startDateDay, startDateHour, startDateMinute),
                                 end: new Date(endDateYear, endDateMonth, endDateDay, endDateHour, endDateMinute)
@@ -55,10 +56,8 @@ class TravelCalendar extends Component {
             .catch(function (err) {
                 console.log(err);
             });
-    }
 
-    componentDidUpdate() {
-        console.log('component updated');
+        
     }
 
     handleSelect = ({ start, end }) => {
@@ -160,9 +159,20 @@ class TravelCalendar extends Component {
         )
     }
 
-
-
-
+    eventStyleGetter = (event, start, end, isSelected) => {
+        console.log("eeeeeeevent: ", event);
+        var style = {
+            backgroundColor: "orange",
+            borderRadius: '10px',
+            opacity: 0.8,
+            color: 'black',
+            border: '0px',
+            display: 'block'
+        };
+        return {
+            style: style
+        };
+    }
 
 
     render() {
@@ -187,6 +197,8 @@ class TravelCalendar extends Component {
                     onSelectSlot={this.handleSelect}
                     style={{ height: "75vh" }}
                     popup
+                    eventPropGetter={this.eventStyleGetter}
+                    // dayPropGetter={this.eventStyleGetter}
                 />
             </div>
         );
