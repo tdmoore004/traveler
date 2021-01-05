@@ -18,6 +18,20 @@ router
       });
   });
 
+router
+  .route("/trips")
+  .get((req, res) => {
+    Trip
+      .find({})
+      .then(data => {
+        res.json({success: true, data});
+      })
+      .catch(err => {
+        console.log(err)
+        res.json({success: false});
+      })
+  });
+
 //User signup/login route handler
 router
   .route("/signup")

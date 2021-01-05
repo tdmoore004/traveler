@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import axios from "axios";
 import EventModal from "../EventModal/EventModal.jsx"
 import TripModal from "../TripModal/TripModal.jsx"
 
@@ -18,6 +19,46 @@ class TravelCalendar extends Component {
         events: [],
         displayDragItemInCell: true
     };
+
+    componentDidMount = () => {
+        axios.get("/api/traveler/trips")
+            .then((res) => {
+                const tripArr = res.data.data;
+
+                tripArr.forEach(trip => {
+                    console.log(trip)
+                    const startDateYear = trip.startDate.slice(0, 4);
+                    const startDateMonth = trip.startDate.slice(5, 7);
+                    const startDateDay = trip.startDate.slice(8, 10);
+                    const startDateHour = trip.startDate.slice(11, 13);
+                    const startDateMinute = trip.startDate.slice(14, 16);
+                    
+                    const endDateYear = trip.endDate.slice(0, 4);
+                    const endDateMonth = trip.endDate.slice(5, 7);
+                    const endDateDay = trip.endDate.slice(8, 10);
+                    const endDateHour = trip.endDate.slice(11, 13);
+                    const endDateMinute = trip.endDate.slice(14, 16);
+
+                    this.setState({
+                        events: [
+                            ...this.state.events,
+                            {
+                                type: "trip",
+                                title: trip.location,
+                                start: new Date(startDateYear, startDateMonth, startDateDay, startDateHour, startDateMinute),
+                                end: new Date(endDateYear, endDateMonth, endDateDay, endDateHour, endDateMinute)
+                            }
+                        ]
+                    })
+                    console.log("state.events: ", this.state.events)
+                })
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+
+        
+    }
 
     handleSelect = ({ start, end }) => {
         const title = window.prompt('New Event name')
@@ -47,8 +88,6 @@ class TravelCalendar extends Component {
     onEventDrop = (data) => {
         console.log(data);
     };
-
-
 
 
 
@@ -115,14 +154,25 @@ class TravelCalendar extends Component {
     handleEventEditModal = (event) => {
         console.log("hit event: ", event)
         return (
-            <EventModal/>,
-            <TripModal/>
+            <EventModal />,
+            <TripModal />
         )
     }
 
-
-
-
+    eventStyleGetter = (event, start, end, isSelected) => {
+        console.log("eeeeeeevent: ", event);
+        var style = {
+            backgroundColor: "orange",
+            borderRadius: '10px',
+            opacity: 0.8,
+            color: 'black',
+            border: '0px',
+            display: 'block'
+        };
+        return {
+            style: style
+        };
+    }
 
 
     render() {
@@ -147,14 +197,9 @@ class TravelCalendar extends Component {
                     onSelectSlot={this.handleSelect}
                     style={{ height: "75vh" }}
                     popup
+                    eventPropGetter={this.eventStyleGetter}
+                    // dayPropGetter={this.eventStyleGetter}
                 />
-                {/* <button
-                    onClick={this.handleEventEditModal}
-                    className="button"
-                    data-toggle="eventModal"
-                >
-                    Edit Event
-                </button> */}
             </div>
         );
     }
