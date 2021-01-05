@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Modal from "react-modal";
+import axios from "axios";
 import DatePicker from "react-datepicker";
 import { TimePicker } from 'antd';
 import moment from 'moment';
-import axios from "axios";
 import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
 
 class EventModal extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             showModal: false,
             // eventType: "",
@@ -17,7 +17,7 @@ class EventModal extends Component {
             departureDate: "",
             departureTime: "",
             // returnDate: "",
-            // returnTime: ""
+            // returnTime: "",
         };
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -65,11 +65,8 @@ class EventModal extends Component {
         //     return;
         // }
 
-        // If we have an email and password we run the loginUser function and clear the form
         this.logTrip(tripData.location, tripData.startDate, tripData.endDate);
         this.handleCloseModal();
-        // emailInput.val("");
-        // passwordInput.val("");
     };
 
     logTrip = (location, startDate, endDate) => {
