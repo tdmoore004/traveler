@@ -4,17 +4,26 @@ import { createContext, useContext, useReducer } from 'react';
 export const GlobalContext = createContext();
 
 // set up Global Provider & reducer
-const defaultState = {
-  todos: []
+const initialState = {
+  isAuth: localStorage.getItem("isAuth"),
+  user: localStorage.getItem("user")
 };
 
 const reducer = (state, action) => {
   console.log({action});
   switch(action.type) {
-    case 'setTodos':
+    case "login":
+      localStorage.setItem("isAuth", true);
+      localStorage.setItem("user", action.payload);
       return {
-        ...state,
-        todos: action.payload
+        isAuth: true,
+        user: action.payload
+      };
+    case "logout":
+      localStorage.setItem("isAuth", "");
+      localStorage.setItem("user", "");
+      return {
+        isAuth: false,
       };
     default:
       return state;
@@ -22,13 +31,14 @@ const reducer = (state, action) => {
 };
 
 const GlobalProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, defaultState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <GlobalContext.Provider value={[state, dispatch]} {...props} />
   );
 };
 
+export const GlobalConsumer = GlobalContext.Consumer;
 
 export default GlobalProvider;
 

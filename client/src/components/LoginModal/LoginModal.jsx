@@ -1,24 +1,16 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Modal from "react-modal";
 import axios from "axios";
+import { useGlobalContext } from "../../utils/GlobalContext.js";
 
+const LoginModal = () => {
 
-class LoginModal extends Component {
+    const [showModal, setShowModal] = useState(false);
+    const [emailInput, setEmailInput] = useState("");
+    const [passwordInput, setPasswordInput] = useState("");
+    const [state, dispatch] = useGlobalContext();
 
-    constructor() {
-        super();
-        this.state = {
-            showModal: false,
-            emailInput: "",
-            passwordInput: ""
-        };
-
-        this.handleOpenModal = this.handleOpenModal.bind(this);
-        this.handleCloseModal = this.handleCloseModal.bind(this);
-        this.handleSubmit = this.handleLoginSubmit.bind(this);
-    }
-
-    customStyles = {
+    const customStyles = {
         content: {
             top: '50%',
             left: '50%',
@@ -30,22 +22,20 @@ class LoginModal extends Component {
         overlay: { zIndex: 1000 }
     };
 
-    handleOpenModal() {
-        this.setState({ showModal: true });
-    }
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
 
-    handleCloseModal() {
-        this.setState({ showModal: false });
-    }
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
 
-    handleLoginSubmit = (event) => {
+    const handleLoginSubmit = (event) => {
         event.preventDefault();
 
-        console.log(this.state.emailInput)
-
         var userData = {
-            email: this.state.emailInput,
-            password: this.state.passwordInput
+            email: emailInput,
+            password: passwordInput
         };
 
         if (!userData.email || !userData.password) {
@@ -53,56 +43,53 @@ class LoginModal extends Component {
         }
 
         // If we have an email and password we run the loginUser function and clear the form
-        this.loginUser(userData.email, userData.password);
-        // emailInput.val("");
-        // passwordInput.val("");
+        loginUser(userData.email, userData.password);
     };
 
-    loginUser = (email, password) => {
+    const loginUser = (email, password) => {
         axios.post("/api/traveler/login", {
             email: email,
             password: password
         })
             .then((response) => {
-                localStorage.setItem("user", response.data);
-                window.location.replace("/");
-                // If there's an error, log the error
+                console.log(response);
+                console.log(state);
+                dispatch({ type: "login", payload: response.data });
             })
             .catch((err) => {
                 console.log(err);
             });
-    }
+    };
 
-    render() {
-        return (
-            <div>
-                <button onClick={this.handleOpenModal}>Login</button>
-                <Modal
-                    isOpen={this.state.showModal}
-                    contentLabel="onRequestClose Example"
-                    onRequestClose={this.handleCloseModal}
-                    shouldCloseOnOverlayClick={false}
-                    style={this.customStyles}
-                    ariaHideApp={false}
-                >
-                    <button onClick={this.handleCloseModal}>X</button>
-                    <form onSubmit={this.handleLoginSubmit} class="cell medium-4" action="/login" method="post">
-                        <div>
-                            <label>Email:</label>
-                            <input type="text" name="username" onChange={e => this.setState({ emailInput: e.target.value })} />
-                        </div>
-                        <div>
-                            <label>Password:</label>
-                            <input type="password" name="password" onChange={e => this.setState({ passwordInput: e.target.value })} />
-                        </div>
-                        <div>
-                            <input type="submit" value="Log In" />
-                        </div>
-                    </form>
-                </Modal>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <button onClick={handleOpenModal}>Login</button>
+            <Modal
+                isOpen={showModal}
+                contentLabel="onRequestClose Example"
+                onRequestClose={handleCloseModal}
+                shouldCloseOnOverlayClick={false}
+                style={customStyles}
+                ariaHideApp={false}
+            >
+                <button onClick={handleCloseModal}>X</button>
+                <form onSubmit={handleLoginSubmit} class="cell medium-4" action="/login" method="post">
+                    <div>
+                        <label>Email:</label>
+                        <input type="text" name="username" onChange={e => setEmailInput(e.target.value)} />
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password" onChange={e => setPasswordInput(e.target.value)} />
+                    </div>
+                    <div>
+                        <input type="submit" value="Log In" />
+                    </div>
+                </form>
+            </Modal>
+        </div>
+    );
+
 };
 
 export default LoginModal;

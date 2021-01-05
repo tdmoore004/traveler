@@ -1,8 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from "../../utils/GlobalContext.js";
 import './Navbar.css';
 
 const Navbar = () => {
+
+  const [state, dispatch] = useGlobalContext();
+
+  const logout = () => {
+    dispatch({ type: "logout" })
+  }
+
   return (
     <nav className="Navbar">
       <div className="Navbar-brand">
@@ -16,14 +24,9 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <ul class="Navbar-Links dropdown menu" data-dropdown-menu>
+        <ul className="Navbar-Links dropdown menu" data-dropdown-menu>
           <li>
-            <a href="#">Account</a>
-            <ul className="menu">
-              <li><a href="#">Add a new trip</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Logout</a></li>
-            </ul>
+          <button onClick={logout}>Logout</button>
           </li>
         </ul>
       </ul>
