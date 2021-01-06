@@ -9,7 +9,7 @@ router
   .route("/")
   .get((req, res) => {
     User
-      .find({})
+      .find()
       .then(data => {
         res.json({ success: true, data });
       })
@@ -19,16 +19,19 @@ router
   });
 
 router
-  .route("/trips")
+  .route("/trips/:id")
   .get((req, res) => {
     Trip
-      .find({})
+      .find({
+        user: req.params.id
+      })
       .then(data => {
-        res.json({success: true, data});
+        console.log(req.params)
+        res.json({ success: true, data });
       })
       .catch(err => {
         console.log(err)
-        res.json({success: false});
+        res.json({ success: false });
       })
   });
 
@@ -73,12 +76,12 @@ router
 
 router.post('/add-trip', async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const trip = new Trip(req.body);
     await trip.save();
 
     const user = await User.findById({ _id: trip.user });
-    console.log(user);
+    // console.log(user);
     user.trips.push(trip);
     await user.save();
     res.status(200).json({ success: true, data: trip });
@@ -90,13 +93,24 @@ router.post('/add-trip', async (req, res) => {
 
 router.post('/add-event', async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const event = (req.body);
-    console.log(event);
-
+    // console.log(event);
     const trip = await Trip.findById({ _id: "5ff3e4fcd0d34440296c26ff" });
-    console.log(trip);
-    trip.activity.push(event);
+    // console.log(trip);
+
+    if (req.body.type === "activity") {
+      trip.activity.push(event);
+    } else if (req.body.type === "flight") {
+      trip.flight.push(event);
+    } else if (req.body.type === "lodging") {
+      trip.lodging.push(event);
+    }
+
+
+
+
+
     await trip.save();
     res.status(200).json({ success: true, data: trip });
   } catch (err) {

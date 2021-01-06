@@ -21,8 +21,10 @@ class TravelCalendar extends Component {
     };
 
     componentDidMount = () => {
-        axios.get("/api/traveler/trips")
+        
+        axios.get(`/api/traveler/trips/${localStorage.getItem("user")}`)
             .then((res) => {
+                console.log("USER: ", localStorage.getItem("user"))
                 const tripArr = res.data.data;
 
                 tripArr.forEach(trip => {

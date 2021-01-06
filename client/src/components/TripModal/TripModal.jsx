@@ -120,14 +120,6 @@ class EventModal extends Component {
                                 shouldCloseOnSelect="true"
                             />
                         </div>
-                        {/* <label>
-                            Are you flying or driving?
-                        <select value={this.state.eventType} onChange={this.handleChange}>
-                                <option value="">Select event type...</option>
-                                <option value="flight">Flying</option>
-                                <option value="drive">Driving</option>
-                            </select>
-                        </label> */}
                         {this.state.eventType === "flight" &&
                             <div>
                                 <label>
