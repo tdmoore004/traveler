@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './tripMenu.css'
 import EventModal from "../EventModal/EventModal.jsx"
 import TripModal from "../TripModal/TripModal.jsx"
+import $ from "jquery";
 
 class TripMenu extends Component {
 
@@ -13,6 +14,9 @@ class TripMenu extends Component {
 
     }
 
+    componentDidMount() {
+        $(document).foundation();
+    }
 
     render() {
         return (

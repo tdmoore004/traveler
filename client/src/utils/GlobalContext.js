@@ -24,6 +24,7 @@ const reducer = (state, action) => {
       localStorage.setItem("user", "");
       return {
         isAuth: false,
+        user: "",
       };
     default:
       return state;
