@@ -26,7 +26,7 @@ const Navbar = () => {
 
         <ul className="Navbar-Links dropdown menu" data-dropdown-menu>
           <li>
-          <button onClick={logout}>Logout</button>
+            <button className="Navbar-links" onClick={logout}>Logout</button>
           </li>
         </ul>
       </ul>
