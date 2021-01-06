@@ -21,28 +21,28 @@ const TripSchema = new mongoose.Schema({
             type: String,
             required: false
         },
+        startDate: {
+            type: Date,
+            required: false
+        },
+        endDate: {
+            type: Date,
+            required: false
+        },
         additionalInfo: {
             type: String,
-        },
-        startActivityDate: {
-            type: Date,
-            required: false
-        },
-        endActivityDate: {
-            type: Date,
-            required: false
-        },
+        }
     }],
-    flights: [{
-        flightNumber: {
+    flight: [{
+        name: {
             type: String,
             required: false
         },
-        startFlightDate: {
+        startDate: {
             type: Date,
             required: false
         },
-        endFlightDate: {
+        endDate: {
             type: Date,
             required: false
         },
@@ -55,11 +55,11 @@ const TripSchema = new mongoose.Schema({
             type: String,
             required: false
         },
-        checkInDate: {
+        startDate: {
             type: Date,
             required: false
         },
-        checkOutDate: {
+        endDate: {
             type: Date,
             required: false
         },

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from "react-modal";
+import axios from "axios";
 
 class EventModal extends Component {
     constructor() {
@@ -42,9 +43,39 @@ class EventModal extends Component {
     }
 
     handleSubmit(event) {
-        console.log('A name was submitted: ' + this.state.value);
+        console.log(this.state.location, this.state.departureDate, this.state.returnDate);
         event.preventDefault();
-    }
+        var eventData = {
+            type: this.state.eventType,
+            location: this.state.location,
+            startDate: this.state.departureDate,
+            endDate: this.state.returnDate,
+        };
+
+        // if (!eventData.email || !eventData.password) {
+        //     return;
+        // }
+
+        this.logEvent(eventData.type, eventData.location, eventData.startDate, eventData.endDate);
+        this.handleCloseModal();
+    };
+
+    logEvent = (type, location, startDate, endDate) => {
+        axios.post("/api/traveler/add-event", {
+            trip: "hello",
+            type: type,
+            startDate: startDate,
+            endDate: endDate
+        })
+            .then(function () {
+                console.log("success");
+                // window.location.replace("/");
+                // If there's an error, log the error
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    };
 
     render() {
         return (
