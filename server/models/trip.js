@@ -16,12 +16,12 @@ const TripSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    activity: {
+    activity: [{
         name: {
             type: String,
             required: false
         },
-        description: {
+        additionalInfo: {
             type: String,
         },
         startActivityDate: {
@@ -32,8 +32,8 @@ const TripSchema = new mongoose.Schema({
             type: Date,
             required: false
         },
-    },
-    flights: {
+    }],
+    flights: [{
         flightNumber: {
             type: String,
             required: false
@@ -46,7 +46,27 @@ const TripSchema = new mongoose.Schema({
             type: Date,
             required: false
         },
-    }
+        additionalInfo: {
+            type: String
+        }
+    }],
+    lodging: [{
+        name: {
+            type: String,
+            required: false
+        },
+        checkInDate: {
+            type: Date,
+            required: false
+        },
+        checkOutDate: {
+            type: Date,
+            required: false
+        },
+        additionalInfo: {
+            type: String
+        }
+    }]
 });
 
 const Trip = mongoose.model('Trip', TripSchema);
