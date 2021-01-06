@@ -86,8 +86,24 @@ router.post('/add-trip', async (req, res) => {
     console.log(err);
     res.status(400).json({ success: false, message: err.message })
   }
+});
 
-})
+router.post('/add-event', async (req, res) => {
+  try {
+    console.log(req.body);
+    const event = (req.body);
+    console.log(event);
+
+    const trip = await Trip.findById({ _id: "5ff3e4fcd0d34440296c26ff" });
+    console.log(trip);
+    trip.activity.push(event);
+    await trip.save();
+    res.status(200).json({ success: true, data: trip });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ success: false, message: err.message })
+  }
+});
 
 // /api/todo/:id
 // router
