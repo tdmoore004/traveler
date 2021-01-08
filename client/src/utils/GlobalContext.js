@@ -1,41 +1,16 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext } from 'react';
+import usePersistedState from "use-persisted-state-hook";
 
 // set up our global context
 export const GlobalContext = createContext();
 
-// set up Global Provider & reducer
-const initialState = {
-  isAuth: localStorage.getItem("isAuth"),
-  user: localStorage.getItem("user")
-};
-
-const reducer = (state, action) => {
-  console.log({action});
-  switch(action.type) {
-    case "login":
-      localStorage.setItem("isAuth", true);
-      localStorage.setItem("user", action.payload);
-      return {
-        isAuth: true,
-        user: action.payload
-      };
-    case "logout":
-      localStorage.setItem("isAuth", "");
-      localStorage.setItem("user", "");
-      return {
-        isAuth: false,
-        user: "",
-      };
-    default:
-      return state;
-  }
-};
-
 const GlobalProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [userContext, setUserContext] = usePersistedState("userContext", { 
+    user: "", isAuth: false 
+  });
 
   return (
-    <GlobalContext.Provider value={[state, dispatch]} {...props} />
+    <GlobalContext.Provider value={[userContext, setUserContext]} {...props} />
   );
 };
 

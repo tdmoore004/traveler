@@ -5,6 +5,7 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import axios from "axios";
 import EventModal from "../EventModal/EventModal.jsx"
 import TripModal from "../TripModal/TripModal.jsx"
+import { GlobalContext } from "../../utils/GlobalContext.js";
 
 // import "./App.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
@@ -15,16 +16,19 @@ const DnDCalendar = withDragAndDrop(Calendar);
 const propTypes = {}
 
 class TravelCalendar extends Component {
+    static contextType = GlobalContext
+    
     state = {
         events: [],
         displayDragItemInCell: true
     };
 
     componentDidMount = () => {
-        
-        axios.get(`/api/traveler/trips/${localStorage.getItem("user")}`)
+        const userContext = this.context;
+
+        axios.get(`/api/traveler/trips/${userContext[0].user}`)
             .then((res) => {
-                console.log("USER: ", localStorage.getItem("user"))
+                console.log("USER: ", userContext[0].user)
                 const tripArr = res.data.data;
 
                 tripArr.forEach(trip => {

@@ -6,7 +6,7 @@ class Login extends Component {
 
     render () {
         return (
-            <div class="grid-x">
+            <div className="grid-x">
                 <LoginModal/>
                 <SignupModal/>
             </div>
