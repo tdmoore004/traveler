@@ -27,27 +27,4 @@ const App = () => {
   );
 }
 
-// class App extends Component {
-
-//   componentDidMount() {
-//     $(document).foundation();
-//   }
-
-//   render() {
-//     return (
-//       <Router>
-//         <UserProvider>
-//           <Navbar />
-//           <div className="App">
-//             <Switch>
-//               <Route exact path='/' component={Homepage} />
-//               <Route exact path='/login' component={Login} />
-//             </Switch>
-//           </div>
-//         </UserProvider>
-//       </Router >
-//     );
-//   }
-// };
-
 export default App;

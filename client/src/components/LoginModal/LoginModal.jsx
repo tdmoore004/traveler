@@ -8,7 +8,7 @@ const LoginModal = () => {
     const [showModal, setShowModal] = useState(false);
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
-    const [state, dispatch] = useGlobalContext();
+    const [userContext, setUserContext] = useGlobalContext();
 
     const customStyles = {
         content: {
@@ -53,8 +53,8 @@ const LoginModal = () => {
         })
             .then((response) => {
                 console.log(response);
-                console.log(state);
-                dispatch({ type: "login", payload: response.data });
+                console.log(userContext);
+                setUserContext({ user: response.data, isAuth: true })
             })
             .catch((err) => {
                 console.log(err);
