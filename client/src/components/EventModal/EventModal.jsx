@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import Modal from "react-modal";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+// import { TimePicker } from 'antd';
+// import moment from 'moment';
+import 'antd/dist/antd.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 class EventModal extends Component {
     constructor() {
         super();
         this.state = {
             showModal: false,
-            eventType: ""
+            eventType: "",
+            tripLocation: [],
         };
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -43,7 +49,6 @@ class EventModal extends Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state.location, this.state.departureDate, this.state.returnDate);
         event.preventDefault();
         var eventData = {
             type: this.state.eventType,
@@ -62,22 +67,51 @@ class EventModal extends Component {
 
     logEvent = (type, location, startDate, endDate) => {
         axios.post("/api/traveler/add-event", {
-            trip: "hello",
             type: type,
+            name: type,
             startDate: startDate,
             endDate: endDate
         })
             .then(function () {
                 console.log("success");
-                // window.location.replace("/");
-                // If there's an error, log the error
             })
             .catch(function (err) {
                 console.log(err);
             });
     };
 
+    componentDidMount = () => {
+        axios.get(`/api/traveler/trips/${localStorage.getItem("user")}`)
+            .then(res => {
+                let tripLocations = [];
+                res.data.data.forEach(trip => {
+                    tripLocations.push(trip.location)
+                });
+                return tripLocations
+            })
+            .then(data => {
+                this.setState({
+                    tripLocation: data
+                })
+            })
+            .catch(err => {
+                console.log("Unable to get trips from backend: ", err);
+            });
+    };
+
+
     render() {
+        let trips = this.state.tripLocation;
+        console.log("TRIPS: ", trips)
+        let createAllTripOptions = trips.map(trip => 
+            <option value={trip}>{trip}</option>
+        )
+
+
+        console.log("CREATED ALL TRIPS: ", createAllTripOptions)
+
+
+
         return (
             <div>
                 <button class="event-button button" onClick={this.handleOpenModal}>Add Event</button>
@@ -92,12 +126,18 @@ class EventModal extends Component {
                     <button onClick={this.handleCloseModal}>X</button>
                     <form onSubmit={this.handleSubmit}>
                         <label>
+                            Trip:
+                        <select value={this.state.eventType} onChange={this.handleChange}>
+                                {createAllTripOptions}
+                            </select>
+                        </label>
+                        <label>
                             Type of Event:
                         <select value={this.state.eventType} onChange={this.handleChange}>
                                 <option value="">Select event type...</option>
                                 <option value="flight">Flight</option>
                                 <option value="lodging">Lodging</option>
-                                <option value="activity">Activity</option>
+                                <option value="activity">Activity</option> 
                             </select>
                         </label>
                         {this.state.eventType === "flight" &&
@@ -107,13 +147,25 @@ class EventModal extends Component {
                                 <input type="text" name="flightNum" />
                                 </label>
                                 <label>
-                                    Departure Time:
-                                <input type="text" name="departureTime" />
+                                    Where are you going?
+                            <input onChange={e => this.setState({ location: e.target.value })} type="text" name="tripLocation" />
                                 </label>
-                                <label>
-                                    Arrival Time:
-                                <input type="text" name="arrivalTime" />
-                                </label>
+                                <div>
+                                    Departure:
+                            <DatePicker
+                                        selected={this.state.departureDate}
+                                        onChange={date => this.setState({ departureDate: date })}
+                                        shouldCloseOnSelect="true"
+                                    />
+                                </div>
+                                <div>
+                                    Return:
+                            <DatePicker
+                                        selected={this.state.returnDate}
+                                        onChange={date => this.setState({ returnDate: date })}
+                                        shouldCloseOnSelect="true"
+                                    />
+                                </div>
                                 <label>
                                     Additional Info:
                                 <input type="text" name="additionalInfoFlight" />
@@ -127,13 +179,25 @@ class EventModal extends Component {
                             <input type="text" name="lodgingName" />
                                 </label>
                                 <label>
-                                    Check-in Date:
-                            <input type="text" name="checkInDate" />
+                                    Where are you going?
+                            <input onChange={e => this.setState({ location: e.target.value })} type="text" name="tripLocation" />
                                 </label>
-                                <label>
-                                    Check-out Date:
-                            <input type="text" name="checkOutDate" />
-                                </label>
+                                <div>
+                                    Check-in:
+                            <DatePicker
+                                        selected={this.state.departureDate}
+                                        onChange={date => this.setState({ departureDate: date })}
+                                        shouldCloseOnSelect="true"
+                                    />
+                                </div>
+                                <div>
+                                    Check-out:
+                            <DatePicker
+                                        selected={this.state.returnDate}
+                                        onChange={date => this.setState({ returnDate: date })}
+                                        shouldCloseOnSelect="true"
+                                    />
+                                </div>
                                 <label>
                                     Additional Info:
                             <input type="text" name="additionalInfoLodge" />
@@ -151,13 +215,25 @@ class EventModal extends Component {
                             <input type="text" name="activityDate" />
                                 </label>
                                 <label>
-                                    Start Time:
-                            <input type="text" name="activityStart" />
+                                    Where are you going?
+                            <input onChange={e => this.setState({ location: e.target.value })} type="text" name="tripLocation" />
                                 </label>
-                                <label>
-                                    End Time:
-                            <input type="text" name="activityEnd" />
-                                </label>
+                                <div>
+                                    Start:
+                            <DatePicker
+                                        selected={this.state.departureDate}
+                                        onChange={date => this.setState({ departureDate: date })}
+                                        shouldCloseOnSelect="true"
+                                    />
+                                </div>
+                                <div>
+                                    End:
+                            <DatePicker
+                                        selected={this.state.returnDate}
+                                        onChange={date => this.setState({ returnDate: date })}
+                                        shouldCloseOnSelect="true"
+                                    />
+                                </div>
                                 <label>
                                     Additional Info:
                             <input type="text" name="additionalInfoActivity" />

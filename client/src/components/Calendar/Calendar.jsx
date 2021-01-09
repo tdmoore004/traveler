@@ -24,11 +24,11 @@ class TravelCalendar extends Component {
         
         axios.get(`/api/traveler/trips/${localStorage.getItem("user")}`)
             .then((res) => {
-                console.log("USER: ", localStorage.getItem("user"))
+                // console.log("USER: ", localStorage.getItem("user"))
                 const tripArr = res.data.data;
 
                 tripArr.forEach(trip => {
-                    console.log(trip)
+                    // console.log(trip)
                     const startDateYear = trip.startDate.slice(0, 4);
                     const startDateMonth = trip.startDate.slice(5, 7);
                     const startDateDay = trip.startDate.slice(8, 10);
@@ -52,7 +52,7 @@ class TravelCalendar extends Component {
                             }
                         ]
                     })
-                    console.log("state.events: ", this.state.events)
+                    // console.log("state.events: ", this.state.events)
                 })
             })
             .catch(function (err) {
@@ -162,7 +162,6 @@ class TravelCalendar extends Component {
     }
 
     eventStyleGetter = (event, start, end, isSelected) => {
-        console.log("eeeeeeevent: ", event);
         var style = {
             backgroundColor: "orange",
             borderRadius: '10px',
