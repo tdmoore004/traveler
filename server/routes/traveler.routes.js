@@ -96,19 +96,18 @@ router.post('/add-event', async (req, res) => {
     // console.log(req.body);
     const event = (req.body);
     // console.log(event);
-    const trip = await Trip.findById({ _id: "5ff3e4fcd0d34440296c26ff" });
-    // console.log(trip);
+    const trip = await Trip.findById({ _id: "5ff0b166248c8ab64434bb66" });
+    console.log("TRIP: ", trip);
 
+    console.log(req.body)
     if (req.body.type === "activity") {
       trip.activity.push(event);
-    } else if (req.body.type === "flight") {
+    } 
+    else if (req.body.type === "flight") {
       trip.flight.push(event);
     } else if (req.body.type === "lodging") {
       trip.lodging.push(event);
     }
-
-
-
 
 
     await trip.save();
