@@ -5,10 +5,10 @@ import './Navbar.css';
 
 const Navbar = () => {
 
-  const [state, dispatch] = useGlobalContext();
+  const [userContext, setUserContext] = useGlobalContext();
 
   const logout = () => {
-    dispatch({ type: "logout" })
+    setUserContext({ user: "", isAuth: false })
   }
 
   return (
