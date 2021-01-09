@@ -16,7 +16,7 @@ const DnDCalendar = withDragAndDrop(Calendar);
 const propTypes = {}
 
 class TravelCalendar extends Component {
-    static contextType = GlobalContext
+    static contextType = GlobalContext;
     
     state = {
         events: [],
@@ -25,6 +25,7 @@ class TravelCalendar extends Component {
 
     componentDidMount = () => {
         const userContext = this.context;
+        console.log(userContext[0].user)
 
         axios.get(`/api/traveler/trips/${userContext[0].user}`)
             .then((res) => {

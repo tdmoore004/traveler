@@ -6,8 +6,11 @@ import DatePicker from "react-datepicker";
 // import moment from 'moment';
 import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
+import { GlobalContext } from "../../utils/GlobalContext.js";
 
 class EventModal extends Component {
+    static contextType = GlobalContext
+
     constructor() {
         super();
         this.state = {
@@ -81,7 +84,10 @@ class EventModal extends Component {
     };
 
     componentDidMount = () => {
-        axios.get(`/api/traveler/trips/${localStorage.getItem("user")}`)
+        const userContext = this.context;
+        console.log(userContext[0].user)
+
+        axios.get(`/api/traveler/trips/${userContext[0].user}`)
             .then(res => {
                 let tripLocations = [];
                 res.data.data.forEach(trip => {
