@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from "../../utils/GlobalContext.js";
 import './Navbar.css';
+import LoginModal from "../LoginModal/LoginModal.jsx"
+import SignupModal from "../SignupModal/SignupModal.jsx"
 
 const Navbar = () => {
 
@@ -12,25 +14,28 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="Navbar">
-      <div className="Navbar-brand">
-        <span>Traveler</span>
-      </div>
+    <header className="top-bar" id="mainNavigation">
+      <h1 className="top-bar-left">
+          Traveler
+      </h1>
 
-      <ul className="Navbar-links">
-        <li className="Navbar-link">
-          <Link to="/">
-            Homepage
-          </Link>
-        </li>
-
-        <ul className="Navbar-Links dropdown menu" data-dropdown-menu>
-          <li>
-            <button className="Navbar-links" onClick={logout}>Logout</button>
-          </li>
+      {/* Navbar menu */}
+      <nav className="top-bar-right" id="nav-menu">
+        <ul className="dropdown vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
+          {userContext.isAuth === true ? (
+            <>
+              <li><Link onClick={logout}>Logout</Link></li>
+            </>
+          ) : (
+              <>
+                <li><LoginModal /></li>
+                <li><SignupModal /></li>
+              </>
+            )}
         </ul>
-      </ul>
-    </nav>
+      </nav>
+
+    </header>
   );
 };
 

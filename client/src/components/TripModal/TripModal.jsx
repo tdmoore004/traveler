@@ -6,8 +6,12 @@ import { TimePicker } from 'antd';
 import moment from 'moment';
 import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
+import { GlobalContext } from "../../utils/GlobalContext.js";
+import cron from "node-cron";
 
 class EventModal extends Component {
+    static contextType = GlobalContext;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -70,18 +74,20 @@ class EventModal extends Component {
     };
 
     logTrip = (location, startDate, endDate) => {
+        const userContext = this.context;
         axios.post("/api/traveler/add-trip", {
-            user: localStorage.getItem("user"),
+            user: userContext[0].user,
             location: location,
             startDate: startDate,
             endDate: endDate
         })
-            .then(function () {
+            .then((response) => {
                 console.log("success");
-                // window.location.replace("/");
-                // If there's an error, log the error
+                // cron.schedule("10 * * * * *", () => {
+                //     console.log(response)
+                //   });
             })
-            .catch(function (err) {
+            .catch((err) => {
                 console.log(err);
             });
     };

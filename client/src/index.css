@@ -1,3 +1,29 @@
+/* Page styles */
+body {
+  min-height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+  padding: 100px 0 100px;
+  position: relative;
+}
+
+h2, h3, h4, h5 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Media queries for changing the body padding for footer and header space */
+@media only screen and (max-width: 1025px) {
+  body {
+      padding: 110px 0 150px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  body {
+      padding: 110px 0 150px;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

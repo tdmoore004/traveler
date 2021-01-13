@@ -21,7 +21,9 @@ const Homepage = () => {
           </div>
         </>
       ) : (
-          <Login />
+          <div>
+            Landing Page Content
+          </div>
         )}
     </main>
   );
