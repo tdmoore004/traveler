@@ -25,26 +25,26 @@ class TravelCalendar extends Component {
 
     componentDidMount = () => {
         const userContext = this.context;
-        console.log(userContext[0].user)
 
         axios.get(`/api/traveler/trips/${userContext[0].user}`)
             .then((res) => {
-                // console.log("USER: ", localStorage.getItem("user"))
+                console.log(res)
                 const tripArr = res.data.data;
 
                 tripArr.forEach(trip => {
-                    // console.log(trip)
                     const startDateYear = trip.startDate.slice(0, 4);
-                    const startDateMonth = trip.startDate.slice(5, 7);
+                    const startDateMonth = trip.startDate.slice(5, 7) - 1;
                     const startDateDay = trip.startDate.slice(8, 10);
                     const startDateHour = trip.startDate.slice(11, 13);
                     const startDateMinute = trip.startDate.slice(14, 16);
                     
                     const endDateYear = trip.endDate.slice(0, 4);
-                    const endDateMonth = trip.endDate.slice(5, 7);
+                    const endDateMonth = trip.endDate.slice(5, 7) - 1;
                     const endDateDay = trip.endDate.slice(8, 10);
                     const endDateHour = trip.endDate.slice(11, 13);
                     const endDateMinute = trip.endDate.slice(14, 16);
+
+                    console.log(trip.startDate.slice(5, 7))
 
                     this.setState({
                         events: [
@@ -57,7 +57,6 @@ class TravelCalendar extends Component {
                             }
                         ]
                     })
-                    // console.log("state.events: ", this.state.events)
                 })
             })
             .catch(function (err) {

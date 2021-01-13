@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import "foundation-sites/dist/css/foundation.min.css";
 import "foundation-sites/dist/js/foundation.min.js";
+import './index.css';
 import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
+import * as serviceWorkerRegistration from './sw/serviceWorkerRegistration.js';
 
 ReactDOM.render(
   <React.StrictMode>

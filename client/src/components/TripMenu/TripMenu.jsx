@@ -56,9 +56,9 @@ class TripMenu extends Component {
     render() {
         let trips = this.state.trips;
         let createAllTripOptions = (trips.map(trip =>
-            <li id="accordion-item" class="accordion-item" data-accordion-item>
-                <a href="#" class="accordion-title">{trip.location}</a>
-                <div class="accordion-content" data-tab-content>
+            <li id="accordion-item" className="accordion-item" data-accordion-item>
+                <a href="#" className="accordion-title">{trip.location}</a>
+                <div className="accordion-content" data-tab-content>
                     <p><a href="#">Flights</a></p>
                     <p><a href="#">Lodging</a></p>
                     <p><a href="#">Activities</a></p>
@@ -75,8 +75,8 @@ class TripMenu extends Component {
                     <a class="trip-button button">Add Trip</a>
                     <a class="event-button button" onClick={<EventModal/>}>Add Event</a>
                 </div> */}
-                <div class="callout">
-                    <ul class="accordion" data-accordion>
+                <div className="callout">
+                    <ul className="accordion" data-accordion>
                     {createAllTripOptions}
                     </ul>
                 </div>

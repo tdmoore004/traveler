@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from "react-modal";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import { useGlobalContext } from "../../utils/GlobalContext.js";
 
@@ -70,7 +71,7 @@ const SignupModal = () => {
 
     return (
         <div>
-            <button onClick={handleOpenModal}>Signup</button>
+            <Link className="userLog" onClick={handleOpenModal}>Signup</Link>
             <Modal
                 isOpen={showModal}
                 contentLabel="onRequestClose Example"

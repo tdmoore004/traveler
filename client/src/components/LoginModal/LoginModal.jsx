@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from "react-modal";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import { useGlobalContext } from "../../utils/GlobalContext.js";
 
@@ -54,7 +55,8 @@ const LoginModal = () => {
             .then((response) => {
                 console.log(response);
                 console.log(userContext);
-                setUserContext({ user: response.data, isAuth: true })
+                setUserContext({ user: response.data, isAuth: true });
+                handleCloseModal();
             })
             .catch((err) => {
                 console.log(err);
@@ -63,7 +65,7 @@ const LoginModal = () => {
 
     return (
         <div>
-            <button onClick={handleOpenModal}>Login</button>
+            <Link className="userLog" onClick={handleOpenModal}>Login</Link>
             <Modal
                 isOpen={showModal}
                 contentLabel="onRequestClose Example"

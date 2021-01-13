@@ -1,24 +1,46 @@
-.Navbar {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid;
-  margin-bottom: 2rem;
-  padding: 1.2rem 0.8rem;
+/* Navbar styles */
+.top-bar, .top-bar ul {
+  background: white;
 }
 
-.Navbar-brand {
-  font-size: 2.4rem;
+/* Setting style for logo in navbar */
+header#mainNavigation.top-bar {
+  max-height: 75px;
+  border-bottom: 2px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-.Navbar-links {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
-  list-style: none;
+h1.top-bar-left {
+  /* max-width: 300px; */
+  margin: 10px;
 }
 
-.Navbar-link {
-  cursor: pointer;
-  font-size: 1.6rem;
-  margin-right: 3.6rem;
+/* Setting styles navbar menu */
+nav.title-bar {
+  background: white;
+}
+
+li.host-logout a:hover {
+  color: #1779ba;
+}
+
+/* Media query for responsive navbar */
+@media only screen and (max-width: 650px) {
+  ul.dropdown.menu {
+      float: right;;
+  }
+  .top-bar .top-bar-left {
+      max-width: 300px;
+  }
+  img#logo {
+      max-width: 225px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .top-bar .top-bar-left {
+      max-width: 250px;
+  }
 }
