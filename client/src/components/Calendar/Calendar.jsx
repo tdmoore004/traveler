@@ -29,36 +29,70 @@ class TravelCalendar extends Component {
         axios.get(`/api/traveler/trips/${userContext[0].user}`)
             .then((res) => {
                 const tripArr = res.data.data;
-
+                this.addTrip(tripArr);
                 tripArr.forEach(trip => {
-                    const startDateYear = trip.startDate.slice(0, 4);
-                    const startDateMonth = trip.startDate.slice(5, 7) - 1;
-                    const startDateDay = trip.startDate.slice(8, 10);
-                    const startDateHour = trip.startDate.slice(11, 13);
-                    const startDateMinute = trip.startDate.slice(14, 16);
-                    
-                    const endDateYear = trip.endDate.slice(0, 4);
-                    const endDateMonth = trip.endDate.slice(5, 7) - 1;
-                    const endDateDay = trip.endDate.slice(8, 10);
-                    const endDateHour = trip.endDate.slice(11, 13);
-                    const endDateMinute = trip.endDate.slice(14, 16);
-
-                    this.setState({
-                        events: [
-                            ...this.state.events,
-                            {
-                                type: "trip",
-                                title: trip.location,
-                                start: new Date(startDateYear, startDateMonth, startDateDay, startDateHour, startDateMinute),
-                                end: new Date(endDateYear, endDateMonth, endDateDay, endDateHour, endDateMinute)
-                            }
-                        ]
-                    })
+                    this.addEvent(trip.activity)
                 })
             })
             .catch(function (err) {
                 console.log(err);
             });
+    }
+
+    addTrip = (tripArr) => {
+        tripArr.forEach(trip => {
+            const startDateYear = trip.startDate.slice(0, 4);
+            const startDateMonth = trip.startDate.slice(5, 7) - 1;
+            const startDateDay = trip.startDate.slice(8, 10);
+            const startDateHour = trip.startDate.slice(11, 13);
+            const startDateMinute = trip.startDate.slice(14, 16);
+            
+            const endDateYear = trip.endDate.slice(0, 4);
+            const endDateMonth = trip.endDate.slice(5, 7) - 1;
+            const endDateDay = trip.endDate.slice(8, 10);
+            const endDateHour = trip.endDate.slice(11, 13);
+            const endDateMinute = trip.endDate.slice(14, 16);
+
+            this.setState({
+                events: [
+                    ...this.state.events,
+                    {
+                        type: "trip",
+                        title: trip.location,
+                        start: new Date(startDateYear, startDateMonth, startDateDay, startDateHour, startDateMinute),
+                        end: new Date(endDateYear, endDateMonth, endDateDay, endDateHour, endDateMinute)
+                    }
+                ]
+            })
+        })
+    }
+    
+    addEvent = (eventArr) => {
+        eventArr.forEach(event => {
+            const startDateYear = event.startDate.slice(0, 4);
+            const startDateMonth = event.startDate.slice(5, 7) - 1;
+            const startDateDay = event.startDate.slice(8, 10);
+            const startDateHour = event.startDate.slice(11, 13);
+            const startDateMinute = event.startDate.slice(14, 16);
+            
+            const endDateYear = event.endDate.slice(0, 4);
+            const endDateMonth = event.endDate.slice(5, 7) - 1;
+            const endDateDay = event.endDate.slice(8, 10);
+            const endDateHour = event.endDate.slice(11, 13);
+            const endDateMinute = event.endDate.slice(14, 16);
+
+            this.setState({
+                events: [
+                    ...this.state.events,
+                    {
+                        type: "activity",
+                        title: event.name,
+                        start: new Date(startDateYear, startDateMonth, startDateDay, startDateHour, startDateMinute),
+                        end: new Date(endDateYear, endDateMonth, endDateDay, endDateHour, endDateMinute)
+                    }
+                ]
+            })
+        })
     }
 
 
