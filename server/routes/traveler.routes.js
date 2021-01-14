@@ -96,7 +96,7 @@ router.post('/add-event', async (req, res) => {
     // console.log(req.body);
     const event = (req.body);
     // console.log(event);
-    const trip = await Trip.findById({ _id: "5ff0b166248c8ab64434bb66" });
+    const trip = await Trip.findById({ _id: "5fffbdaea7dd343cb980c809" });
     console.log("TRIP: ", trip);
 
     console.log(req.body)
