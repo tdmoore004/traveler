@@ -28,6 +28,7 @@ class TripMenu extends Component {
                 res.data.data.forEach(trip => {
                     initialTrips.push(trip)
                 });
+                initialTrips.sort((a, b) => (a.startDate > b.startDate) ? 1 : -1);
                 return initialTrips
             })
             .then(data => {
@@ -55,29 +56,75 @@ class TripMenu extends Component {
 
     render() {
         let trips = this.state.trips;
-        let createAllTripOptions = (trips.map(trip =>
-            <li id="accordion-item" className="accordion-item" data-accordion-item>
-                <a href="#" className="accordion-title">{trip.location}</a>
-                <div className="accordion-content" data-tab-content>
-                    <p><a href="#">Flights</a></p>
-                    <p><a href="#">Lodging</a></p>
-                    <p><a href="#">Activities</a></p>
-                </div>
-            </li>
-        )
-        )
+        let createAllTripOptions = (trips.map(trip => {
+            let location = trip.location;
+            let flights = [];
+            let lodging = [];
+            let activities = [];
+            trip.flight.map(flight => flights.push(flight));
+            trip.lodging.map(lodge => lodging.push(lodge));
+            trip.activity.map(activity => activities.push(activity));
+
+            let allFlights;
+            let allLodging;
+            let allActivities;
+
+            if (flights !== []) {
+                allFlights = flights.map(flight =>
+                    <li>{flight.name}</li>
+                )
+            };
+
+            if (lodging !== []) {
+                allLodging = lodging.map(lodge =>
+                    <li>{lodge.name}</li>
+                )
+            };
+
+            if (activities !== []) {
+                allActivities = activities.map(activity =>
+                    <li>{activity.name}</li>
+                )
+            };
+
+            return (
+                <li id="accordion-item" className="accordion-item" data-accordion-item>
+                    <a href="#" className="accordion-title">{location}</a>
+                    <div className="accordion-content" data-tab-content>
+                        <p>
+                            Flights
+                            <ul>
+                                {allFlights}
+                            </ul>
+                        </p>
+                        <p>
+                            Lodging
+                            <ul>
+                                {allLodging}
+                            </ul>
+                        </p>
+                        <p>
+                            Activities
+                            <ul>
+                                {allActivities}
+                            </ul>
+                        </p>
+                    </div>
+                </li>
+            );
+        }));
 
         return (
             <>
-                <EventModal/>
-                <TripModal/>
+                <EventModal />
+                <TripModal />
                 {/* <div class="primary button-group">
                     <a class="trip-button button">Add Trip</a>
                     <a class="event-button button" onClick={<EventModal/>}>Add Event</a>
                 </div> */}
                 <div className="callout">
                     <ul className="accordion" data-accordion>
-                    {createAllTripOptions}
+                        {createAllTripOptions}
                     </ul>
                 </div>
             </>
