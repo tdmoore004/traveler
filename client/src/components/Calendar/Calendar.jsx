@@ -28,7 +28,6 @@ class TravelCalendar extends Component {
 
         axios.get(`/api/traveler/trips/${userContext[0].user}`)
             .then((res) => {
-                console.log(res)
                 const tripArr = res.data.data;
 
                 tripArr.forEach(trip => {
@@ -43,8 +42,6 @@ class TravelCalendar extends Component {
                     const endDateDay = trip.endDate.slice(8, 10);
                     const endDateHour = trip.endDate.slice(11, 13);
                     const endDateMinute = trip.endDate.slice(14, 16);
-
-                    console.log(trip.startDate.slice(5, 7))
 
                     this.setState({
                         events: [
@@ -62,9 +59,8 @@ class TravelCalendar extends Component {
             .catch(function (err) {
                 console.log(err);
             });
-
-        
     }
+
 
     handleSelect = ({ start, end }) => {
         const title = window.prompt('New Event name')
