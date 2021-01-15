@@ -4,7 +4,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 // import { TimePicker } from 'antd';
 // import moment from 'moment';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
 import { GlobalContext } from "../../utils/GlobalContext.js";
 
@@ -15,13 +15,17 @@ class EventModal extends Component {
         super();
         this.state = {
             showModal: false,
-            eventType: "",
-            tripLocation: [],
+            trip: [],
+            name: "",
+            tripId: "",
+            additionalInfo: "",
+            eventType: ""
         };
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleTripChange = this.handleTripChange.bind(this);
+        this.handleEventChange = this.handleEventChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -45,35 +49,37 @@ class EventModal extends Component {
         this.setState({ showModal: false });
     }
 
-    handleChange(event) {
-        console.log(event)
+    handleTripChange(event) {
+        this.setState({ tripId: event.target.value });
+    }
+
+    handleEventChange(event) {
         this.setState({ eventType: event.target.value });
-        console.log(this.state.eventType)
     }
 
     handleSubmit(event) {
         event.preventDefault();
         var eventData = {
+            id: this.state.tripId,
             type: this.state.eventType,
-            location: this.state.location,
+            name: this.state.name,
             startDate: this.state.departureDate,
             endDate: this.state.returnDate,
+            additionalInfo: this.state.additionalInfo
         };
 
-        // if (!eventData.email || !eventData.password) {
-        //     return;
-        // }
-
-        this.logEvent(eventData.type, eventData.location, eventData.startDate, eventData.endDate);
+        this.logEvent(eventData.id, eventData.name, eventData.type, eventData.startDate, eventData.endDate, eventData.additionalInfo);
         this.handleCloseModal();
     };
 
-    logEvent = (type, location, startDate, endDate) => {
+    logEvent = (id, name, type, startDate, endDate, additionalInfo) => {
         axios.post("/api/traveler/add-event", {
+            id: id,
             type: type,
-            name: type,
+            name: name,
             startDate: startDate,
-            endDate: endDate
+            endDate: endDate,
+            additionalInfo: additionalInfo
         })
             .then(function () {
                 console.log("success");
@@ -85,19 +91,21 @@ class EventModal extends Component {
 
     componentDidMount = () => {
         const userContext = this.context;
-        console.log(userContext[0].user)
 
         axios.get(`/api/traveler/trips/${userContext[0].user}`)
             .then(res => {
-                let tripLocations = [];
+                let tripInfo = [];
                 res.data.data.forEach(trip => {
-                    tripLocations.push(trip.location)
+                    tripInfo.push({
+                        id: trip._id,
+                        location: trip.location
+                    })
                 });
-                return tripLocations
+                return tripInfo
             })
             .then(data => {
                 this.setState({
-                    tripLocation: data
+                    trip: data
                 })
             })
             .catch(err => {
@@ -107,16 +115,11 @@ class EventModal extends Component {
 
 
     render() {
-        let trips = this.state.tripLocation;
-        console.log("TRIPS: ", trips)
-        let createAllTripOptions = trips.map(trip => 
-            <option value={trip}>{trip}</option>
+
+        let trips = this.state.trip;
+        let createAllTripOptions = trips.map(trip =>
+            <option value={trip.id}>{trip.location}</option>
         )
-
-
-        console.log("CREATED ALL TRIPS: ", createAllTripOptions)
-
-
 
         return (
             <div>
@@ -133,28 +136,25 @@ class EventModal extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Trip:
-                        <select value={this.state.eventType} onChange={this.handleChange}>
+                        <select value={this.state.trip.id} onChange={this.handleTripChange}>
+                                <option value="">Select trip...</option>
                                 {createAllTripOptions}
                             </select>
                         </label>
                         <label>
                             Type of Event:
-                        <select value={this.state.eventType} onChange={this.handleChange}>
+                        <select value={this.state.eventType} onChange={this.handleEventChange}>
                                 <option value="">Select event type...</option>
                                 <option value="flight">Flight</option>
                                 <option value="lodging">Lodging</option>
-                                <option value="activity">Activity</option> 
+                                <option value="activity">Activity</option>
                             </select>
                         </label>
                         {this.state.eventType === "flight" &&
                             <div>
                                 <label>
-                                    Flight Number:
-                                <input type="text" name="flightNum" />
-                                </label>
-                                <label>
-                                    Where are you going?
-                            <input onChange={e => this.setState({ location: e.target.value })} type="text" name="tripLocation" />
+                                    Flight number:
+                            <input onChange={e => this.setState({ name: e.target.value })} type="text" name="tripLocation" />
                                 </label>
                                 <div>
                                     Departure:
@@ -174,19 +174,19 @@ class EventModal extends Component {
                                 </div>
                                 <label>
                                     Additional Info:
-                                <input type="text" name="additionalInfoFlight" />
+                                <input
+                                        type="text"
+                                        name="additionalInfoFlight"
+                                        onChange={info => this.setState({ additionalInfo: info.target.value })}
+                                    />
                                 </label>
                             </div>
                         }
                         {this.state.eventType === "lodging" &&
                             <div>
                                 <label>
-                                    Lodging Name:
-                            <input type="text" name="lodgingName" />
-                                </label>
-                                <label>
-                                    Where are you going?
-                            <input onChange={e => this.setState({ location: e.target.value })} type="text" name="tripLocation" />
+                                    Lodging name:
+                            <input onChange={e => this.setState({ name: e.target.value })} type="text" name="tripLocation" />
                                 </label>
                                 <div>
                                     Check-in:
@@ -206,23 +206,19 @@ class EventModal extends Component {
                                 </div>
                                 <label>
                                     Additional Info:
-                            <input type="text" name="additionalInfoLodge" />
+                                    <input
+                                        type="text"
+                                        name="additionalInfoLodge"
+                                        onChange={info => this.setState({ additionalInfo: info.target.value })}
+                                    />
                                 </label>
                             </div>
                         }
                         {this.state.eventType === "activity" &&
                             <div>
                                 <label>
-                                    Activity Name:
-                            <input type="text" name="activityName" />
-                                </label>
-                                <label>
-                                    Date:
-                            <input type="text" name="activityDate" />
-                                </label>
-                                <label>
-                                    Where are you going?
-                            <input onChange={e => this.setState({ location: e.target.value })} type="text" name="tripLocation" />
+                                    Activity name:
+                            <input onChange={e => this.setState({ name: e.target.value })} type="text" name="tripLocation" />
                                 </label>
                                 <div>
                                     Start:
@@ -242,7 +238,11 @@ class EventModal extends Component {
                                 </div>
                                 <label>
                                     Additional Info:
-                            <input type="text" name="additionalInfoActivity" />
+                                    <input
+                                        type="text"
+                                        name="additionalInfoActivity"
+                                        onChange={info => this.setState({ additionalInfo: info.target.value })}
+                                    />
                                 </label>
                             </div>
                         }

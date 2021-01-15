@@ -7,7 +7,6 @@ import Landing from "./Landing.jsx";
 
 const Homepage = () => {
   const [userContext] = useGlobalContext();
-  console.log(userContext);
 
   return (
     <main className="grid-x">
