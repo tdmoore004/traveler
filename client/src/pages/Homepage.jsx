@@ -3,7 +3,7 @@ import React from 'react';
 import TravelCalendar from '../components/Calendar/Calendar.jsx';
 import TripMenu from '../components/TripMenu/TripMenu.jsx';
 import { useGlobalContext } from "../utils/GlobalContext.js";
-import Login from "../pages/Login.jsx";
+import Landing from "./Landing.jsx";
 
 const Homepage = () => {
   const [userContext] = useGlobalContext();
@@ -20,9 +20,7 @@ const Homepage = () => {
           </div>
         </>
       ) : (
-          <div>
-            Landing Page Content
-          </div>
+          <Landing/>
         )}
     </main>
   );

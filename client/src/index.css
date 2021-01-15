@@ -20,7 +20,7 @@ h2, h3, h4, h5 {
 
 @media only screen and (max-width: 650px) {
   body {
-      padding: 110px 0 150px;
+      padding: 140px 0 150px;
   }
 }
 
@@ -34,4 +34,106 @@ h2, h3, h4, h5 {
   width: 90%;
   max-width: 1600px;
   margin: 0 auto;
+}
+
+/* Landing page styles */
+main.card.grid-container.grid-x.align-center.about {
+  width: 95%;
+  max-width: 1000px;
+  align-self: center;
+  border-radius: 5px 5px 5px 5px;
+  border: none;
+}
+
+h3.card-divider {
+  background-color: transparent;
+  border-bottom: 1px solid #1779ba;
+  margin: 0px;
+  padding: 0px;
+}
+
+section.card-section.about {
+  padding: 20px 10px 10px;
+}
+
+img#profilePic {
+  width: 100%;
+  padding: 0px 0px 20px 0px;
+}
+
+a.resumeLink {
+  font-size: 16px;
+  text-decoration: underline;
+  color: #1779ba;
+}
+
+/* Footer styles */
+footer.large.callout.secondary {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  padding: 25px;
+  background-color: #c2c2c23a;
+  color: black;
+}
+
+img.footer-logo {
+  max-width: 275px;
+}
+
+figcaption.copyright {
+  font-size: 14px;
+  margin: 0;
+}
+
+figure.large-4.cell.copyright {
+  font-size: 18px;
+  align-content: left;
+}
+
+nav.large-8.cell.logo-links {
+  font-size: 18px;
+  text-align: right;
+  padding: 10px 0;
+}
+
+nav.large-8.cell.logo-links.hidden-large {
+  display: none;
+}
+
+.fab.fa-linkedin-in, .fab.fa-github {
+  font-size: 25px;
+  vertical-align: middle;
+  margin: 5px;
+}
+
+@media only screen and (max-width: 1023px) {
+  footer.large.callout.secondary {
+      text-align: center;
+  }
+
+  figure.large-4.cell.copyright {
+      align-content: center;
+      font-size: 16px;
+  }
+
+  nav.large-8.cell.logo-links.hidden-large {
+      display: block;
+      text-align: center;
+      margin: 0 0 15px;
+      padding: 0;
+  }
+
+  nav.large-8.cell.logo-links.hidden-medium {
+      display: none;
+  }
+
+  .fab.fa-linkedin-in, .fab.fa-github {
+      text-align: center;
+  }
+
+  img.footer-logo {
+      max-width: 240px;
+  }
 }
