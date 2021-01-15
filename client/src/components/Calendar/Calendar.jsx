@@ -7,9 +7,9 @@ import EventModal from "../EventModal/EventModal.jsx"
 import TripModal from "../TripModal/TripModal.jsx"
 import { GlobalContext } from "../../utils/GlobalContext.js";
 
-// import "./App.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import './calendar.css';
 
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
@@ -31,8 +31,12 @@ class TravelCalendar extends Component {
                 const tripArr = res.data.data;
                 this.addTrip(tripArr);
                 tripArr.forEach(trip => {
-                    this.addEvent(trip.activity)
+                    this.addEvent(trip.activity);
+                    this.addEvent(trip.flight);
+                    this.addEvent(trip.lodging);
+
                 })
+                // console.log(tripArr)
             })
             .catch(function (err) {
                 console.log(err);
@@ -41,6 +45,8 @@ class TravelCalendar extends Component {
 
     addTrip = (tripArr) => {
         tripArr.forEach(trip => {
+            const tripTitle = ('Trip to: ' + trip.location)
+
             const startDateYear = trip.startDate.slice(0, 4);
             const startDateMonth = trip.startDate.slice(5, 7) - 1;
             const startDateDay = trip.startDate.slice(8, 10);
@@ -58,7 +64,8 @@ class TravelCalendar extends Component {
                     ...this.state.events,
                     {
                         type: "trip",
-                        title: trip.location,
+                        title: tripTitle,
+
                         start: new Date(startDateYear, startDateMonth, startDateDay, startDateHour, startDateMinute),
                         end: new Date(endDateYear, endDateMonth, endDateDay, endDateHour, endDateMinute)
                     }
@@ -85,7 +92,7 @@ class TravelCalendar extends Component {
                 events: [
                     ...this.state.events,
                     {
-                        type: "activity",
+                        type: "event",
                         title: event.name,
                         start: new Date(startDateYear, startDateMonth, startDateDay, startDateHour, startDateMinute),
                         end: new Date(endDateYear, endDateMonth, endDateDay, endDateHour, endDateMinute)
@@ -94,7 +101,6 @@ class TravelCalendar extends Component {
             })
         })
     }
-
 
 
     handleSelect = ({ start, end }) => {
@@ -189,7 +195,6 @@ class TravelCalendar extends Component {
     }
 
     handleEventEditModal = (event) => {
-        console.log("hit event: ", event)
         return (
             <EventModal />,
             <TripModal />
@@ -197,14 +202,28 @@ class TravelCalendar extends Component {
     }
 
     eventStyleGetter = (event, start, end, isSelected) => {
-        var style = {
-            backgroundColor: "orange",
-            borderRadius: '10px',
-            opacity: 0.8,
-            color: 'black',
-            border: '0px',
-            display: 'block'
-        };
+        // let className;
+        let style = {};
+        if(event.type === "trip") {
+            // className = "rbc-off-range"
+            style = {
+                backgroundColor: "#64b8b1",
+                borderRadius: '10px',
+                opacity: 0.8,
+                color: 'white',
+                border: '0px',
+                display: 'block'
+            };
+        } else if (event.type === "event") {
+            style = {
+                backgroundColor: "#92C4EE",
+                borderRadius: '10px',
+                opacity: 0.8,
+                color: 'white',
+                border: '0px',
+                display: 'block'
+            }
+        } 
         return {
             style: style
         };

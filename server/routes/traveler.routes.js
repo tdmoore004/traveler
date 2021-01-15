@@ -95,6 +95,7 @@ router.post('/add-event', async (req, res) => {
   try {
     console.log("REQ.BODY: ", req.body)
     const event = (req.body);
+
     const trip = await Trip.findById({ _id: req.body.id });
     console.log("TRIP: ", trip);
 

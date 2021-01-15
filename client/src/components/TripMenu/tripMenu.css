@@ -9,6 +9,7 @@
     border-bottom-left-radius: 8px;
     width: 49%;
     margin-right: 1px;
+    background-color: #64b8b1;
 }
 
 .event-button {
@@ -16,4 +17,17 @@
     border-bottom-right-radius: 8px;
     width: 49%;
     float: right;
+    background-color: #64b8b1;
+}
+
+.trip-button:hover {
+    background-color: rgb(252, 201, 119);
+}
+
+.event-button:hover {
+    background-color: rgb(252, 201, 119);
+}
+
+.callout {
+    background-color: #e9d59c;
 }
