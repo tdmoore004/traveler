@@ -1,6 +1,6 @@
 /* Navbar styles */
 .top-bar {
-  background-image: linear-gradient(to right, #e9d59c , white);
+  background-image: linear-gradient(to bottom, #e9d59c , white);
 }
 
 /* Setting style for logo in navbar */
@@ -13,28 +13,34 @@ header#mainNavigation.top-bar {
   z-index: 100;
 }
 
-
 h1.top-bar-left {
   /* max-width: 300px; */
   margin: 10px;
-  color: #92C4EE;
+  color: #739dbe;
   font-family: 'East Sea Dokdo', cursive;
+  font-size: 65px;
 }
 
 /* Setting styles navbar menu */
 nav.title-bar {
-  background: white;
+  background: transparent;
 }
 
 .fas.fa-ellipsis-v {
   font-size: 22px;
-  color: #92C4EE;
+  color: #739dbe;
+}
+
+.vertical.medium-horizontal.menu.dropdown {
+  background: transparent;
 }
 
 a.social-dropdown, a {
   font-size: 18px;
   font-weight: 500;
   color: black;
+
+}
 
 .button {
   border-radius: 8px;
@@ -67,6 +73,11 @@ li.is-submenu-item.is-dropdown-submenu-item a:hover {
   border-radius: 5px 5px 5px 5px;
 }
 
+nav#nav-menu.top-bar-right, a.login-logout {
+  background-color: transparent;
+  color: #739dbe;
+}
+
 /* Media query for responsive navbar */
 @media only screen and (max-width: 650px) {
   ul.dropdown.menu {
@@ -75,14 +86,12 @@ li.is-submenu-item.is-dropdown-submenu-item a:hover {
   .top-bar .top-bar-left {
       max-width: 150px;
       margin: 0px;
+      font-size: 35px;
+  }
+  nav#nav-menu.top-bar-right, a.login-logout {
+    background-color: white;
   }
   img#logo {
       max-width: 225px;
   }
 }
-
-/* @media only screen and (max-width: 350px) {
-  .top-bar .top-bar-left {
-      max-width: 250px;
-  }
-} */

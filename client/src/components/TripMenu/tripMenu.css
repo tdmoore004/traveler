@@ -21,13 +21,21 @@
 }
 
 .trip-button:hover {
-    background-color: rgb(252, 201, 119);
+    background-color: #70d1c9;
 }
 
 .event-button:hover {
-    background-color: rgb(252, 201, 119);
+    background-color: #70d1c9;
+}
+
+.trip-button:focus {
+    background-color: #70d1c9;
+}
+
+.event-button:focus {
+    background-color: #70d1c9;
 }
 
 .callout {
-    background-color: #e9d59c;
+    background-color: #e9dfc3;
 }

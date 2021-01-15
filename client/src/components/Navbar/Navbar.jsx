@@ -33,7 +33,7 @@ const Navbar = () => {
         <ul className="dropdown vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
           {userContext.isAuth === true ? (
             <>
-              <li><button class="button" onClick={logout}>Logout</button></li>
+              <li><Link class="login-logout" onClick={logout}>Logout</Link></li>
             </>
           ) : (
               <>

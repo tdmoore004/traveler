@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Modal from "react-modal";
 import axios from "axios";
 import DatePicker from "react-datepicker";
-// import { TimePicker } from 'antd';
-// import moment from 'moment';
-// import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
 import { GlobalContext } from "../../utils/GlobalContext.js";
 
@@ -85,6 +82,7 @@ class EventModal extends Component {
         })
             .then(function () {
                 console.log("success");
+                window.location.reload();
             })
             .catch(function (err) {
                 console.log(err);

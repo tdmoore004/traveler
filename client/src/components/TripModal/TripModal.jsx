@@ -7,7 +7,6 @@ import moment from 'moment';
 import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
 import { GlobalContext } from "../../utils/GlobalContext.js";
-import cron from "node-cron";
 
 class EventModal extends Component {
     static contextType = GlobalContext;
@@ -16,12 +15,9 @@ class EventModal extends Component {
         super(props);
         this.state = {
             showModal: false,
-            // eventType: "",
             location: "",
             departureDate: "",
             departureTime: "",
-            // returnDate: "",
-            // returnTime: "",
         };
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -65,10 +61,6 @@ class EventModal extends Component {
             endDate: this.state.returnDate,
         };
 
-        // if (!tripData.email || !tripData.password) {
-        //     return;
-        // }
-
         this.logTrip(tripData.location, tripData.startDate, tripData.endDate);
         this.handleCloseModal();
     };
@@ -83,9 +75,7 @@ class EventModal extends Component {
         })
             .then((response) => {
                 console.log("success");
-                // cron.schedule("10 * * * * *", () => {
-                //     console.log(response)
-                //   });
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err);

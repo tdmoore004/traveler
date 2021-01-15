@@ -1,21 +1,21 @@
 /* Page styles */
 #root {
-
   min-height: 100vh;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 16px;
   padding: 100px 0 100px;
   position: relative;
 }
 
 h2, h3, h4, h5 {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Rubik', sans-serif;
+
 }
 
 /* Media queries for changing the body padding for footer and header space */
 @media only screen and (max-width: 1025px) {
   #root {
-      padding: 66px 0 150px;
+      padding: 100px 0 150px;
   }
 }
 
@@ -48,7 +48,7 @@ main.card.grid-container.grid-x.align-center.about {
 
 h3.card-divider {
   background-color: transparent;
-  border-bottom: 1px solid #1779ba;
+  border-bottom: 1px solid #739dbe;
   margin: 0px;
   padding: 0px;
 }
@@ -57,15 +57,9 @@ section.card-section.about {
   padding: 20px 10px 10px;
 }
 
-img#profilePic {
+img#beachPic {
   width: 100%;
   padding: 0px 0px 20px 0px;
-}
-
-a.resumeLink {
-  font-size: 16px;
-  text-decoration: underline;
-  color: #1779ba;
 }
 
 /* Footer styles */
@@ -75,15 +69,19 @@ footer.large.callout.secondary {
   width: 100%;
   margin: 0;
   padding: 10px;
-  background-color: #c2c2c2;
+  background-image: linear-gradient(to top, #739dbe , white);
   color: black;
   height: 100px;
   z-index: 100;
+  border: none;
 }
 
 h3.footer-logo {
   max-width: 275px;
+  max-height: 50px;
   margin: 0px;
+  font-family: 'East Sea Dokdo', cursive;
+  font-size: 45px;
 }
 
 figcaption.copyright {
@@ -96,45 +94,15 @@ figure.large-4.cell.copyright {
   align-content: left;
 }
 
-nav.large-8.cell.logo-links {
-  font-size: 18px;
-  text-align: right;
-  padding: 10px 0;
-}
-
-nav.large-8.cell.logo-links.hidden-large {
-  display: none;
-}
-
-.fab.fa-linkedin-in, .fab.fa-github {
-  font-size: 25px;
-  vertical-align: middle;
-  margin: 5px;
-}
-
 @media only screen and (max-width: 1023px) {
   footer.large.callout.secondary {
       text-align: center;
+      background-image: linear-gradient(to top, #739dbe , white);
   }
 
   figure.large-4.cell.copyright {
       align-content: center;
       font-size: 16px;
-  }
-
-  nav.large-8.cell.logo-links.hidden-large {
-      display: block;
-      text-align: center;
-      margin: 0 0 15px;
-      padding: 0;
-  }
-
-  nav.large-8.cell.logo-links.hidden-medium {
-      display: none;
-  }
-
-  .fab.fa-linkedin-in, .fab.fa-github {
-      text-align: center;
   }
 
   img.footer-logo {

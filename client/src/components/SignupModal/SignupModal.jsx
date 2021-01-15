@@ -71,7 +71,7 @@ const SignupModal = () => {
 
     return (
         <div>
-            <Link className="userLog" onClick={handleOpenModal}>Signup</Link>
+            <Link className="userLog login-logout" onClick={handleOpenModal}>Signup</Link>
             <Modal
                 isOpen={showModal}
                 contentLabel="onRequestClose Example"

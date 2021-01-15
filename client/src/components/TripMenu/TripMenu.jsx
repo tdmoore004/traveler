@@ -46,7 +46,6 @@ class TripMenu extends Component {
 
     initializeFoundation = () => {
         console.log('initialized')
-        // $(document).foundation();
 
         new Accordion($(".accordion"), {
             slideSpeed: 500,
@@ -118,10 +117,6 @@ class TripMenu extends Component {
             <>
                 <EventModal />
                 <TripModal />
-                {/* <div class="primary button-group">
-                    <a class="trip-button button">Add Trip</a>
-                    <a class="event-button button" onClick={<EventModal/>}>Add Event</a>
-                </div> */}
                 <div className="callout">
                     <ul className="accordion" data-accordion>
                         {createAllTripOptions}
