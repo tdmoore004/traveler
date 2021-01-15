@@ -96,6 +96,7 @@ class TravelCalendar extends Component {
     }
 
 
+
     handleSelect = ({ start, end }) => {
         const title = window.prompt('New Event name')
         if (title)
