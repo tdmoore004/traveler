@@ -8,7 +8,6 @@ const Footer = () => {
                 {/* Logo and copyright. */}
                 <figure className="large-4 cell copyright">
                     <h3 className="footer-logo">
-                        Traveler
                     </h3>
                         <figcaption className="copyright">
                             Copyright &#169; 2020 All Rights Reserved

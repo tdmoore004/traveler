@@ -1,6 +1,6 @@
 /* Page styles */
+#root {
 
-body {
   min-height: 100vh;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 16px;
@@ -14,14 +14,14 @@ h2, h3, h4, h5 {
 
 /* Media queries for changing the body padding for footer and header space */
 @media only screen and (max-width: 1025px) {
-  body {
-      padding: 110px 0 150px;
+  #root {
+      padding: 66px 0 150px;
   }
 }
 
 @media only screen and (max-width: 650px) {
-  body {
-      padding: 140px 0 150px;
+  #root {
+      padding: 65px 0 150px;
   }
 }
 
@@ -74,13 +74,16 @@ footer.large.callout.secondary {
   bottom: 0;
   width: 100%;
   margin: 0;
-  padding: 25px;
-  background-color: #c2c2c23a;
+  padding: 10px;
+  background-color: #c2c2c2;
   color: black;
+  height: 100px;
+  z-index: 100;
 }
 
-img.footer-logo {
+h3.footer-logo {
   max-width: 275px;
+  margin: 0px;
 }
 
 figcaption.copyright {

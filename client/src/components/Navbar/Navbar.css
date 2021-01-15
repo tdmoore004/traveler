@@ -10,7 +10,9 @@ header#mainNavigation.top-bar {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 100;
 }
+
 
 h1.top-bar-left {
   /* max-width: 300px; */
@@ -24,6 +26,16 @@ nav.title-bar {
   background: white;
 }
 
+.fas.fa-ellipsis-v {
+  font-size: 22px;
+  color: #92C4EE;
+}
+
+a.social-dropdown, a {
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+
 .button {
   border-radius: 8px;
   margin-right: 1px;
@@ -34,21 +46,43 @@ li.host-logout a:hover {
   color: #1779ba;
 }
 
+.dropdown.menu li.is-dropdown-submenu-parent a.social-dropdown::after {
+  display: none;
+}
+
+.accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle)>a::after {
+  display: none;
+}
+
+li.is-submenu-item.is-dropdown-submenu-item a {
+  color: black;
+  font-size: 16px;
+}
+
+li.is-submenu-item.is-dropdown-submenu-item a:hover {
+  color: #1779ba;
+}
+
+.is-dropdown-submenu {
+  border-radius: 5px 5px 5px 5px;
+}
+
 /* Media query for responsive navbar */
 @media only screen and (max-width: 650px) {
   ul.dropdown.menu {
       float: right;;
   }
   .top-bar .top-bar-left {
-      max-width: 300px;
+      max-width: 150px;
+      margin: 0px;
   }
   img#logo {
       max-width: 225px;
   }
 }
 
-@media only screen and (max-width: 350px) {
+/* @media only screen and (max-width: 350px) {
   .top-bar .top-bar-left {
       max-width: 250px;
   }
-}
+} */
