@@ -8,6 +8,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { GlobalContext } from "../../utils/GlobalContext.js";
 
+import "./eventModal.css";
+
 class EventModal extends Component {
     static contextType = GlobalContext
 
@@ -98,7 +100,8 @@ class EventModal extends Component {
                 res.data.data.forEach(trip => {
                     tripInfo.push({
                         id: trip._id,
-                        location: trip.location
+                        location: trip.location,
+                        startDate: trip.startDate
                     })
                 });
                 return tripInfo
