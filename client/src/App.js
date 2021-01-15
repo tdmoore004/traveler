@@ -2,8 +2,8 @@ import React, { Component, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import GlobalProvider from './utils/GlobalContext.js';
 import Homepage from './pages/Homepage';
-import Login from './pages/Login.jsx';
 import Navbar from './components/Navbar';
+import Footer from "./components/Footer/Footer.jsx"
 import $ from "jquery";
 
 const App = () => {
@@ -19,9 +19,9 @@ const App = () => {
         <div className="App">
           <Switch>
             <Route exact path='/' component={Homepage} />
-            <Route exact path='/login' component={Login} />
           </Switch>
         </div>
+        <Footer/>
       </GlobalProvider>
     </Router >
   );

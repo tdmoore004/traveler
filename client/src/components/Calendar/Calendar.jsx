@@ -34,6 +34,7 @@ class TravelCalendar extends Component {
                     this.addEvent(trip.activity);
                     this.addEvent(trip.flight);
                     this.addEvent(trip.lodging);
+
                 })
                 // console.log(tripArr)
             })
@@ -64,6 +65,7 @@ class TravelCalendar extends Component {
                     {
                         type: "trip",
                         title: tripTitle,
+
                         start: new Date(startDateYear, startDateMonth, startDateDay, startDateHour, startDateMinute),
                         end: new Date(endDateYear, endDateMonth, endDateDay, endDateHour, endDateMinute)
                     }

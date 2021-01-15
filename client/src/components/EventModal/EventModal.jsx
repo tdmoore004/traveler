@@ -102,6 +102,7 @@ class EventModal extends Component {
                         id: trip._id,
                         location: trip.location,
                         startDate: trip.startDate
+
                     })
                 });
                 return tripInfo
