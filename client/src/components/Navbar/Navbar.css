@@ -1,6 +1,6 @@
 /* Navbar styles */
-.top-bar, .top-bar ul {
-  background: white;
+.top-bar {
+  background-image: linear-gradient(to right, #e9d59c , white);
 }
 
 /* Setting style for logo in navbar */
@@ -15,11 +15,19 @@ header#mainNavigation.top-bar {
 h1.top-bar-left {
   /* max-width: 300px; */
   margin: 10px;
+  color: #92C4EE;
+  font-family: 'East Sea Dokdo', cursive;
 }
 
 /* Setting styles navbar menu */
 nav.title-bar {
   background: white;
+}
+
+.button {
+  border-radius: 8px;
+  margin-right: 1px;
+  background-color: #64b8b1;
 }
 
 li.host-logout a:hover {
