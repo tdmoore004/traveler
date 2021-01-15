@@ -95,7 +95,8 @@ router.post('/add-event', async (req, res) => {
   try {
     console.log("REQ.BODY: ", req.body)
     const event = (req.body);
-    const trip = await Trip.findById({ _id: req.body.id });
+    // console.log(event);
+    const trip = await Trip.findById({ _id: "5fffbdaea7dd343cb980c809" });
     console.log("TRIP: ", trip);
 
     if (req.body.type === "activity") {

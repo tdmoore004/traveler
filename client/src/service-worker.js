@@ -70,3 +70,36 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+const dataCacheName = "traveler-data-cache-v1";
+const cacheName = "workbox-precache-v2"
+
+self.addEventListener('fetch', (event) => {
+  if (event.request.url.includes("/api/")) {
+    event.respondWith(
+      caches.open(dataCacheName).then(cache => {
+        return fetch(event.request)
+          .then(response => {
+            // If the response was good, clone it and store it in the cache.
+            if (response.status === 200) {
+              cache.put(event.request.url, response.clone());
+            }
+
+            return response;
+          })
+          .catch(err => {
+            // Network request failed, try to get it from the cache.
+            return cache.match(event.request);
+          });
+      }).catch(err => console.log(err))
+    );
+
+    return;
+  }
+  event.respondWith(
+    caches.open(cacheName).then(cache => {
+      return cache.match(event.request).then(response => {
+        return response || fetch(event.request);
+      });
+    })
+  );
+});
