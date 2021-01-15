@@ -4,6 +4,8 @@ import { useGlobalContext } from "../../utils/GlobalContext.js";
 import './Navbar.css';
 import LoginModal from "../LoginModal/LoginModal.jsx"
 import SignupModal from "../SignupModal/SignupModal.jsx"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
 
@@ -16,8 +18,15 @@ const Navbar = () => {
   return (
     <header className="top-bar" id="mainNavigation">
       <h1 className="top-bar-left">
-          Traveler
+        Traveler
       </h1>
+
+      {/* Responsive navbar menu */}
+      <nav className="title-bar" data-responsive-toggle="nav-menu" data-hide-for="medium">
+        <button type="button" data-toggle="nav-menu">
+          <FontAwesomeIcon className="fas fa-ellipsis-v" icon={faEllipsisV} />
+        </button>
+      </nav>
 
       {/* Navbar menu */}
       <nav className="top-bar-right" id="nav-menu">
