@@ -6,7 +6,8 @@ export const GlobalContext = createContext();
 
 const GlobalProvider = (props) => {
   const [userContext, setUserContext] = usePersistedState("userContext", { 
-    user: "", isAuth: false 
+    user: "",
+    isAuth: false 
   });
 
   return (

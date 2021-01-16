@@ -73,6 +73,7 @@ class EventModal extends Component {
         })
             .then((response) => {
                 console.log("success");
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err);
