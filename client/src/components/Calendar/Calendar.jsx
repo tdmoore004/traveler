@@ -6,7 +6,7 @@ import EventModal from "../EventModal/EventModal.jsx";
 import TripModal from "../TripModal/TripModal.jsx";
 import { GlobalContext } from "../../utils/GlobalContext.js";
 
-import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+// import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import './calendar.css';
 
@@ -160,7 +160,6 @@ class TravelCalendar extends Component {
                     events={this.state.events}
                     localizer={localizer}
                     style={{ height: "75vh" }}
-                    popup
                     eventPropGetter={this.eventStyleGetter}
                     // onSelectSlot={this.handleSelect}
                 />
