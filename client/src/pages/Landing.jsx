@@ -10,7 +10,7 @@ class Login extends Component {
 
             {/* Headline introducing who I am. */}
             <h3 className="card-divider about">
-                Are you dreaming of relaxing on a secluded island?
+                Dreaming of relaxing on a secluded island?
             </h3>
 
             <section className="card-section">
