@@ -4,10 +4,9 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import { TimePicker } from 'antd';
 import moment from 'moment';
-import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
 import { GlobalContext } from "../../utils/GlobalContext.js";
-import cron from "node-cron";
+import "./tripModal.css";
 
 class EventModal extends Component {
     static contextType = GlobalContext;
@@ -16,12 +15,9 @@ class EventModal extends Component {
         super(props);
         this.state = {
             showModal: false,
-            // eventType: "",
             location: "",
             departureDate: "",
             departureTime: "",
-            // returnDate: "",
-            // returnTime: "",
         };
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -44,17 +40,15 @@ class EventModal extends Component {
 
     handleOpenModal() {
         this.setState({ showModal: true });
-    }
+    };
 
     handleCloseModal() {
         this.setState({ showModal: false });
-    }
+    };
 
     handleChange(event) {
-        console.log(event)
         this.setState({ eventType: event.target.value });
-        console.log(this.state.eventType)
-    }
+    };
 
     handleSubmit(event) {
         console.log(this.state.location, this.state.departureDate, this.state.returnDate);
@@ -64,10 +58,6 @@ class EventModal extends Component {
             startDate: this.state.departureDate,
             endDate: this.state.returnDate,
         };
-
-        // if (!tripData.email || !tripData.password) {
-        //     return;
-        // }
 
         this.logTrip(tripData.location, tripData.startDate, tripData.endDate);
         this.handleCloseModal();
@@ -83,9 +73,6 @@ class EventModal extends Component {
         })
             .then((response) => {
                 console.log("success");
-                // cron.schedule("10 * * * * *", () => {
-                //     console.log(response)
-                //   });
             })
             .catch((err) => {
                 console.log(err);
@@ -206,7 +193,5 @@ class EventModal extends Component {
         );
     }
 }
-
-const props = {};
 
 export default EventModal;
