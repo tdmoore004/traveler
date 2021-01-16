@@ -26,7 +26,7 @@ class EventModal extends Component {
         this.handleTripChange = this.handleTripChange.bind(this);
         this.handleEventChange = this.handleEventChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    };
 
     customStyles = {
         content: {
@@ -42,19 +42,19 @@ class EventModal extends Component {
 
     handleOpenModal() {
         this.setState({ showModal: true });
-    }
+    };
 
     handleCloseModal() {
         this.setState({ showModal: false });
-    }
+    };
 
     handleTripChange(event) {
         this.setState({ tripId: event.target.value });
-    }
+    };
 
     handleEventChange(event) {
         this.setState({ eventType: event.target.value });
-    }
+    };
 
     handleSubmit(event) {
         event.preventDefault();
@@ -114,7 +114,6 @@ class EventModal extends Component {
                 console.log("Unable to get trips from backend: ", err);
             });
     };
-
 
     render() {
 
@@ -253,9 +252,7 @@ class EventModal extends Component {
                 </Modal>
             </div>
         );
-    }
-}
-
-const props = {};
+    };
+};
 
 export default EventModal;

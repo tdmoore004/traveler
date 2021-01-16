@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Accordion } from 'foundation-sites';
-import './tripMenu.css'
-import EventModal from "../EventModal/EventModal.jsx"
-import TripModal from "../TripModal/TripModal.jsx"
+import './tripMenu.css';
+import EventModal from "../EventModal/EventModal.jsx";
+import TripModal from "../TripModal/TripModal.jsx";
 import $ from "jquery";
 import axios from "axios";
 import { GlobalContext } from "../../utils/GlobalContext.js";
@@ -17,7 +17,7 @@ class TripMenu extends Component {
             trips: [],
         };
 
-    }
+    };
 
     componentDidMount() {
         const userContext = this.context;
@@ -41,17 +41,14 @@ class TripMenu extends Component {
             .catch(err => {
                 console.log("Unable to get trips from backend: ", err);
             });
-
-    }
+    };
 
     initializeFoundation = () => {
-        console.log('initialized')
-
         new Accordion($(".accordion"), {
             slideSpeed: 500,
             multiExpand: true
-        })
-    }
+        });
+    };
 
     render() {
         let trips = this.state.trips;

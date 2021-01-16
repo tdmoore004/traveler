@@ -4,9 +4,9 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import { TimePicker } from 'antd';
 import moment from 'moment';
-import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
 import { GlobalContext } from "../../utils/GlobalContext.js";
+import "./tripModal.css";
 
 class EventModal extends Component {
     static contextType = GlobalContext;
@@ -40,17 +40,15 @@ class EventModal extends Component {
 
     handleOpenModal() {
         this.setState({ showModal: true });
-    }
+    };
 
     handleCloseModal() {
         this.setState({ showModal: false });
-    }
+    };
 
     handleChange(event) {
-        console.log(event)
         this.setState({ eventType: event.target.value });
-        console.log(this.state.eventType)
-    }
+    };
 
     handleSubmit(event) {
         console.log(this.state.location, this.state.departureDate, this.state.returnDate);
@@ -196,7 +194,5 @@ class EventModal extends Component {
         );
     }
 }
-
-const props = {};
 
 export default EventModal;
