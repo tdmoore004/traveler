@@ -1,6 +1,6 @@
 # Traveler
 
-## Make your travel simple with all the info you need in one place.
+#### Do you love to travel all of the world? Relaxing on the beach with your toes in the sand or taking care of business in New York? Look no further then Traveler to keep track of all of your upcoming travels and all the included activities and events that come with. Even if you are out of the country and don't have internet you can still get all the info you need for all the activities you may have.
 <hr>
 
   [![github-follow](https://img.shields.io/github/followers/tdmoore004?label=Follow&logoColor=purple&style=social)](https://github.com/tdmoore004)
@@ -59,7 +59,7 @@
 
   
   ## Credits and Reference
-  The following links have helped us with this project. <br> [React](https://reactjs.org/) <br>  [Passport](http://www.passportjs.org/) <br>  [bcrypt](https://www.npmjs.com/package/bcryptjs) <br> [Mongoose](https://mongoosejs.com/)  <br> [Foundation CSS Framework](https://get.foundation/) <br> [React Big Calendar](https://www.npmjs.com/package/react-big-calendar) <br> [React Date Picker](https://www.npmjs.com/package/react-datepicker)
+  The following links have helped us with this project. <br> [React](https://reactjs.org/) <br>  [Passport](http://www.passportjs.org/) <br>  [bcrypt](https://www.npmjs.com/package/bcryptjs) <br> [Mongoose](https://mongoosejs.com/)  <br> [Foundation CSS](https://get.foundation/) <br> [React Big Calendar](https://www.npmjs.com/package/react-big-calendar) <br> [React Date Picker](https://www.npmjs.com/package/react-datepicker)
 
 
   ## Challenges and Progress
