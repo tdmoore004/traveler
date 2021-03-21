@@ -12,14 +12,13 @@
 
   ## Table of Content
   * [ Project Links ](#Project-Links)
-  * [ Screenshots-Demo ](#Screenshots-Demo)
+  * [ Screenshots ](#Screenshots)
   * [ Project Objective ](#Project-Objective)
   * [ User Story ](#User-Story)
-  * [ Technologies ](#Technologies)
+  * [ Technologies ](#Built-With)
   * [ Installation ](#Installation)
   * [ Usage ](#Usage)
   * [ Credits and Reference ](#Credits-and-Reference)
-  * [ Tests ](#Tests)
   * [ Author Contact ](#Author-Contact)
   * [ License ](#License)
   #
@@ -30,7 +29,7 @@
   
   ##### Github REPO link:  https://github.com/tdmoore004/traveler
 
-  ## Screenshots-Demo
+  ## Screenshots
   <kbd>![startup/login](./screenshots/startup-login.png)</kbd>
   <kbd>![mainpage](./screenshots/mainpage.png)</kbd>
   
@@ -44,12 +43,12 @@
   As an avid traveler, I want to be able to store all of my necessary travel information for flights, lodging and activities, so that I can focus on enjoying my travels and not have to take time to look in multiple places for any information I may need. I want to be able to add information for my flights both to and from my destination as well as any details for my lodging once I arrive as well as the activities that I am participating in; I want to have easy access to this information both before and during my trip, even if I may not have an internet connection. 
 
 
-  ## Technologies 
+  ## Built With 
   ```
-  node.js, react-big-calendar, react-date-picker, express.js, express-session, bcryptjs, passport, passport-local strategy,
+  Node.js, Express.js, React, Passport, Bcrypt.js
   ```
   ```
-  mongoose, mysql2, react, Foundation CSS, jQuery and heroku. 
+  MongoDB, Mongoose, Foundation CSS, React-Big-Calendar, React-Date-Picker. 
   ```
   
   ## Installation
@@ -79,7 +78,7 @@
 
   <hr>
   <p align='center'><i>
-  Built by <a href="https://github.com/jaromplewe"> Jarom Plewe, </a><a href="https://github.com/tdmoore004"> Tanner Moore, </a>
+  Built by <a href="https://github.com/jaromplewe"> Jarom Plewe, </a><a href="https://github.com/tdmoore004"> Tanner Moore</a>
 </i></p>
 
 ## Description
