@@ -1,6 +1,6 @@
 # Traveler
 
-#### Do you love to travel all of the world? Relaxing on the beach with your toes in the sand or taking care of business in New York? Look no further then Traveler to keep track of all of your upcoming travels and all the included activities and events that come with. Even if you are out of the country and don't have internet you can still get all the info you need for all the activities you may have.
+## Keep track of all the information needed for all your travels in one place.
 <hr>
 
   [![github-follow](https://img.shields.io/github/followers/tdmoore004?label=Follow&logoColor=purple&style=social)](https://github.com/tdmoore004)
@@ -11,6 +11,7 @@
   [![npm](https://img.shields.io/npm/v/npm?color=blue&logo=npm)](https://www.npmjs.com/package/inquirer)
 
   ## Table of Content
+  * [ Description ](#Description)
   * [ Project Links ](#Project-Links)
   * [ Screenshots ](#Screenshots)
   * [ Project Objective ](#Project-Objective)
@@ -22,6 +23,9 @@
   * [ Author Contact ](#Author-Contact)
   * [ License ](#License)
   #
+
+  ## Description
+  Do you love to travel? Relaxing on the beach with your toes in the sand or taking care of business in New York? Look no further then Traveler to keep track of all of your upcoming travels and all the included activities and events that come with. Even if you are out of the country and don't have internet you can still get all the info you need for all the activities you may have.
 
   ##  Project Links
 
