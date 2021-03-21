@@ -15,7 +15,7 @@
   * [ Screenshots ](#Screenshots)
   * [ Project Objective ](#Project-Objective)
   * [ User Story ](#User-Story)
-  * [ Technologies ](#Built-With)
+  * [ Built With ](#Built-With)
   * [ Installation ](#Installation)
   * [ Usage ](#Usage)
   * [ Credits and Reference ](#Credits-and-Reference)
@@ -25,9 +25,9 @@
 
   ##  Project Links
 
-  ##### Deployed site on heroku: https://shrouded-brushlands-11149.herokuapp.com/
+  ##### Deployed site on Heroku: https://shrouded-brushlands-11149.herokuapp.com/
   
-  ##### Github REPO link:  https://github.com/tdmoore004/traveler
+  ##### Github Repo link:  https://github.com/tdmoore004/traveler
 
   ## Screenshots
   <kbd>![startup/login](./screenshots/startup-login.png)</kbd>
@@ -48,11 +48,11 @@
   Node.js, Express.js, React, Passport, Bcrypt.js
   ```
   ```
-  MongoDB, Mongoose, Foundation CSS, React-Big-Calendar, React-Date-Picker. 
+  MongoDB, Mongoose, Foundation CSS, React-Big-Calendar, React-Date-Picker
   ```
   
   ## Installation
-  Access to GitHub.com and a code editor such as vscode is necessary. Click the GitHub link provided above to the APP REPO. Click on the green button that says Clone or Download and Choose how you would like to download: using the SSH/HTTPS keys or download the zip file. If using SSH/HTTPS Key: You will copy the link shown and open up either terminal (mac: pre-installed) or gitbash (pc: must be installed). Once the application is open, you will type git clone paste url here. If using Download ZIP: Click on Download Zip. Locate the file and double click it to unzip the file. Locate the unzipped folder and open it. 
+  This application does not require installation and can be accessed via the [ Heroku link ](#####Deployed-site-on-Heroku) provided above. Access to GitHub.com and a code editor such as vscode is necessary. Click the GitHub link provided above to the APP REPO. Click on the green button that says Clone or Download and Choose how you would like to download: using the SSH/HTTPS keys or download the zip file. If using SSH/HTTPS Key: You will copy the link shown and open up either terminal (mac: pre-installed) or gitbash (pc: must be installed). Once the application is open, you will type git clone paste url here. If using Download ZIP: Click on Download Zip. Locate the file and double click it to unzip the file. Locate the unzipped folder and open it. 
 
   ## Usage 
   There are two ways your can run this APP. One is to go to [the deployed site](https://glacial-gorge-49813.herokuapp.com/). Another is to run it on your local machine through a localhost PORT. First, you need terminal (mac: pre-installed) or gitbash (pc: must be installed). You also need to download and install [node.js](https://nodejs.org/en/) and [npm](www.npmjs.com) or [yarn](https://yarnpkg.com/) package manager. Open the cloned REPO in your favorite code editor, and then in terminal, enter the command “ npm i “ or “yarn add”  to install the dependencies. Make sure to create a .env file on the project root, and input your own Mysql Workbench config information (see the root file .env_example for samples). Now you are ready to start using  the app by entering “npm start” on your terminal or gitbash. 
@@ -80,28 +80,3 @@
   <p align='center'><i>
   Built by <a href="https://github.com/jaromplewe"> Jarom Plewe, </a><a href="https://github.com/tdmoore004"> Tanner Moore</a>
 </i></p>
-
-## Description
-Keep track of all of your upcoming travels and all the included activities and events that come with. Even if you are out of the country and don't have internet you can still get all the info you need for your next tour right in Traveler.
-
-## Deployment
-https://shrouded-brushlands-11149.herokuapp.com/
-
-## Built with
-* MongoDB/Mongoose
-* Express.js
-* React.js
-* Node.js
-
-#### Other resources
-* React-big-calendar
-* React-date-picker
-
-## Screenshots
-#### Startup/Login Page
-![startup/login](./screenshots/startup-login.png)
-#### Main Page
-![mainpage](./screenshots/mainpage.png)
-
-## Lisence
-This project is licensed under the MIT License - see the LICENSE.md file for details
