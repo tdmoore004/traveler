@@ -65,12 +65,6 @@
   ## Credits and Reference
   The following links have helped us with this project. <br> [React](https://reactjs.org/) <br>  [Passport](http://www.passportjs.org/) <br>  [bcrypt](https://www.npmjs.com/package/bcryptjs) <br> [Mongoose](https://mongoosejs.com/)  <br> [Foundation CSS](https://get.foundation/) <br> [React Big Calendar](https://www.npmjs.com/package/react-big-calendar) <br> [React Date Picker](https://www.npmjs.com/package/react-datepicker)
 
-
-  ## Challenges and Progress
-  * Time constrain was one of the biggest challenges. Four of us had less than 2 weeks (besides working full time) to complete this project, from ideation to deployment and presentation. We had to cut down on features so that we could build a functional scooter rathan than an automobile that is broken. 
-  * It is first time for any of us to build something of this scale, from front-end (using express-handlebars and Foundation CSS) to server (node.js express.js) to database connection (express sequelize, mysql2), along with new tools for authentication such as passport, passort-local startegy, express-session and password hashing such as bcryptjs. Any changes including the ones that improve the APP could cause unexpected bugs and hours of our time to fix the hugs. 
-  * 
-
   ## Author Contact
   Contact the authors with any questions!
   Github link: [jaromplewe](https://github.com/jaromplewe), [tdmoore004](https://github.com/tdmoore004)
