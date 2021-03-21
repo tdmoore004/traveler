@@ -59,7 +59,7 @@
 
   
   ## Credits and Reference
-  The following links have helped us with this project. <br> [express-sessioon](https://www.npmjs.com/package/express-session) <br>  [Passport](http://www.passportjs.org/) <br>  [bcrypt](https://www.npmjs.com/package/bcryptjs) <br>  [How do sessions work in Express.js with Node.js?](https://stackoverflow.com/questions/5522020/how-do-sessions-work-in-express-js-with-node-js) <br> [sequelize](https://sequelize.org/master/index.html)  <br> [Foundation CSS Framework](https://get.foundation/) <br> [Mockaroo Data Generator](https://mockaroo.com/) <br> [Rover](https://www.rover.com/account/profile/details/)
+  The following links have helped us with this project. <br> [React](https://reactjs.org/) <br>  [Passport](http://www.passportjs.org/) <br>  [bcrypt](https://www.npmjs.com/package/bcryptjs) <br> [Mongoose](https://mongoosejs.com/)  <br> [Foundation CSS Framework](https://get.foundation/) <br> [React Big Calendar](https://www.npmjs.com/package/react-big-calendar) <br> [React Date Picker](https://www.npmjs.com/package/react-datepicker)
 
 
   ## Challenges and Progress
