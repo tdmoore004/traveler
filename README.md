@@ -75,7 +75,7 @@
   ## License
   This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
 
-   Copyright © 2020 FurBabiezzzz [Jarom Plewe](https://github.com/jaromplewe), [Tanner Moore](https://github.com/tdmoore004)
+   Copyright © 2020 [Jarom Plewe](https://github.com/jaromplewe), [Tanner Moore](https://github.com/tdmoore004)
 
   <hr>
   <p align='center'><i>
