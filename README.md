@@ -52,10 +52,10 @@
   ```
   
   ## Installation
-  This application does not require installation and can be accessed via the [ Heroku link ](#####Deployed-site-on-Heroku) provided above. Access to GitHub.com and a code editor such as vscode is necessary. Click the GitHub link provided above to the APP REPO. Click on the green button that says Clone or Download and Choose how you would like to download: using the SSH/HTTPS keys or download the zip file. If using SSH/HTTPS Key: You will copy the link shown and open up either terminal (mac: pre-installed) or gitbash (pc: must be installed). Once the application is open, you will type git clone paste url here. If using Download ZIP: Click on Download Zip. Locate the file and double click it to unzip the file. Locate the unzipped folder and open it. 
+  This application does not require installation and can be accessed via the [ Heroku link ](#Project-Links) provided above. To run application locally you can fork and clone to your device through GitHub. After cloning repo to your device, run yarn or npm to install necessary packages and link to local database.
 
   ## Usage 
-  There are two ways your can run this APP. One is to go to [the deployed site](https://glacial-gorge-49813.herokuapp.com/). Another is to run it on your local machine through a localhost PORT. First, you need terminal (mac: pre-installed) or gitbash (pc: must be installed). You also need to download and install [node.js](https://nodejs.org/en/) and [npm](www.npmjs.com) or [yarn](https://yarnpkg.com/) package manager. Open the cloned REPO in your favorite code editor, and then in terminal, enter the command “ npm i “ or “yarn add”  to install the dependencies. Make sure to create a .env file on the project root, and input your own Mysql Workbench config information (see the root file .env_example for samples). Now you are ready to start using  the app by entering “npm start” on your terminal or gitbash. 
+  If you are running application locally, after installing on your device, you will need to run ```yarn dev``` or ```npm dev``` to run both server and client side application concurrently. Once application is running locally, or you are on the Heroku site, you can start by creating an account, or signing in if you already have an account. Once signed in you can add a trip and any flights, lodging or activities for a trip. Once trips, flights, lodging or activities are added you can view them in the calendar or in the menu on the left.
 
   
   ## Credits and Reference
